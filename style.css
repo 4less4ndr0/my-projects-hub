@@ -715,3 +715,146 @@ body {
   color: var(--muted-foreground);
   line-height: 1.4;
 }
+
+/* ---------- project dialog accordion (per-stage questions & answers) ---------- */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-section {
+  border-top: 1px solid var(--border);
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: calc(100% + 1.5rem);
+  margin: 0 -0.75rem;
+  padding: 1.1rem 0.75rem;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  font: inherit;
+  color: var(--foreground);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.12s ease;
+}
+
+.accordion-header:hover {
+  background: var(--muted);
+}
+
+.accordion-header:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent);
+}
+
+.accordion-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.stage-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot-color, var(--foreground));
+}
+
+.accordion-label {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.lock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  background: var(--muted);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+
+.lock-badge svg {
+  display: block;
+}
+
+.chevron {
+  flex: none;
+  display: flex;
+  color: var(--muted-foreground);
+  transition: transform 0.2s ease, color 0.12s ease;
+}
+
+.accordion-header[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+  color: var(--foreground);
+}
+
+.accordion-body-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.22s ease;
+}
+
+.accordion-section.is-open .accordion-body-wrap {
+  grid-template-rows: 1fr;
+}
+
+.accordion-body {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.accordion-body-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 0 0.75rem 1.4rem;
+}
+
+.qa-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.qa-answer {
+  margin: 0.35rem 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--foreground);
+}
+
+.qa-answer.qa-empty {
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+
+.accordion-updated {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+.stage-deliverables {
+  border-top: 1px dashed var(--border);
+  padding-top: 1.1rem;
+}
+
+.intake-list-preview {
+  margin: 0;
+}

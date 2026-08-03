@@ -15,7 +15,18 @@ Tutti i contenuti vivono in [`data.json`](data.json). Non c'è build né backend
       "description": "Una riga di descrizione",
       "stage": "ideation | wip | shipment | revenue",
       "updated": "YYYY-MM-DD",
-      "notes": "Ultimo stato in una frase",
+      "summary": "Ultimo stato in una frase, mostrato sulla card",
+      "stages": {
+        "ideation": {
+          "updated": "YYYY-MM-DD",
+          "answers": ["risposta 1", "risposta 2", "risposta 3", "risposta 4"]
+        },
+        "wip": {
+          "updated": "YYYY-MM-DD",
+          "answers": ["risposta 1", "risposta 2", "risposta 3"],
+          "deliverables": [{ "text": "Cosa va fatto", "done": false }]
+        }
+      },
       "revenue": { "status": "none | early | growing", "amount": "", "notes": "" },
       "links": [{ "label": "Repo", "url": "https://..." }]
     }
@@ -25,6 +36,8 @@ Tutti i contenuti vivono in [`data.json`](data.json). Non c'è build né backend
   ]
 }
 ```
+
+`stages` ha una chiave per ogni fase raggiunta (`ideation`, `wip`, `shipment`, `revenue`); le fasi non ancora raggiunte si omettono — il dialog di dettaglio mostrerà per quelle solo le domande di riferimento, senza risposta. Le domande di ogni fase (e i riferimenti al framework da cui vengono) vivono in `INTAKE_QUESTIONS` dentro [`script.js`](script.js), non in `data.json`: le risposte devono seguire lo stesso ordine.
 
 ## Pubblicazione
 

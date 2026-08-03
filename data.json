@@ -7,16 +7,34 @@
       "description": "Questa è una card di esempio: sostituiscila (o cancellala) con il primo progetto reale.",
       "stage": "wip",
       "updated": "2026-08-03",
-      "notes": "Sto lavorando alla prima versione funzionante.",
-      "status": "Il core dell'app funziona in locale: onboarding e flusso principale sono completi. Manca la parte di pagamenti e un giro di test con 2-3 utenti reali prima di poter pensare allo shipment.",
-      "deliverables": [
-        { "text": "Wireframe e validazione dell'idea", "done": true },
-        { "text": "Setup progetto e primo deploy locale", "done": true },
-        { "text": "Flusso di onboarding utente", "done": true },
-        { "text": "Integrazione pagamenti", "done": false },
-        { "text": "Test con 2-3 utenti reali", "done": false },
-        { "text": "Landing page pubblica", "done": false }
-      ],
+      "summary": "Sto lavorando alla prima versione funzionante.",
+      "stages": {
+        "ideation": {
+          "updated": "2026-07-20",
+          "answers": [
+            "Freelance e piccoli team che oggi tengono traccia di più progetti/idee su note sparse: li ho scelti perché sono il mio stesso caso d'uso, posso validarlo su di me prima di allargare.",
+            "Il valore critico è un colpo d'occhio unico sullo stato di ogni progetto (idea, wip, shipment, revenue) invece di rincorrere appunti in giro; lo usano quando decidono su cosa lavorare la settimana dopo.",
+            "Il competitor più vicino è Notion/Trello usati in modo destrutturato: vinco perché la vista è già organizzata per fase, zero setup.",
+            "Assunzione chiave: le persone rispondono volentieri a poche domande strutturate invece di scrivere note libere. Non ancora testata su altri, solo su me stesso."
+          ]
+        },
+        "wip": {
+          "updated": "2026-08-03",
+          "answers": [
+            "L'MVP è la landing statica con card, dialog di dettaglio e bacino idee. Sono a buon punto: manca la parte di pagamenti/integrazioni e un giro di test reale.",
+            "Per ora sono l'unico utente: il progetto si aggiorna quando io stesso lo apro dopo aver parlato con Claude in chat.",
+            "Nessun modello di business per ora: è uno strumento personale, non pensato per generare revenue diretta."
+          ],
+          "deliverables": [
+            { "text": "Wireframe e validazione dell'idea", "done": true },
+            { "text": "Setup progetto e primo deploy locale", "done": true },
+            { "text": "Flusso di onboarding utente", "done": true },
+            { "text": "Integrazione pagamenti", "done": false },
+            { "text": "Test con 2-3 utenti reali", "done": false },
+            { "text": "Landing page pubblica", "done": false }
+          ]
+        }
+      },
       "revenue": {
         "status": "none",
         "amount": "",

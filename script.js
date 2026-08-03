@@ -70,9 +70,19 @@ const REVENUE_LABELS = {
   growing: "Revenue in crescita",
 };
 
+const CHEVRON_SVG =
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+const LOCK_SVG =
+  '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+
 function stageIndex(key) {
   const i = STAGES.findIndex((s) => s.key === key);
   return i === -1 ? 0 : i;
+}
+
+function questionsFor(stageKey) {
+  return (INTAKE_QUESTIONS.find((g) => g.stage === stageKey) || {}).questions || [];
 }
 
 function escapeHtml(str) {
@@ -115,27 +125,27 @@ function renderRevenueLine(project) {
   }${revenue.notes ? ` · ${escapeHtml(revenue.notes)}` : ""}</p>`;
 }
 
-function overridesKey(projectId) {
-  return `projects-hub:deliverables:${projectId}`;
+function overridesKey(projectId, stageKey) {
+  return `projects-hub:deliverables:${projectId}:${stageKey}`;
 }
 
-function loadOverrides(projectId) {
+function loadOverrides(projectId, stageKey) {
   try {
-    return JSON.parse(localStorage.getItem(overridesKey(projectId))) || {};
+    return JSON.parse(localStorage.getItem(overridesKey(projectId, stageKey))) || {};
   } catch {
     return {};
   }
 }
 
-function saveOverride(projectId, text, done) {
-  const overrides = loadOverrides(projectId);
+function saveOverride(projectId, stageKey, text, done) {
+  const overrides = loadOverrides(projectId, stageKey);
   overrides[text] = done;
-  localStorage.setItem(overridesKey(projectId), JSON.stringify(overrides));
+  localStorage.setItem(overridesKey(projectId, stageKey), JSON.stringify(overrides));
 }
 
-function renderDeliverables(list, projectId) {
+function renderDeliverables(list, projectId, stageKey) {
   if (!list || !list.length) return "";
-  const overrides = loadOverrides(projectId);
+  const overrides = loadOverrides(projectId, stageKey);
   const effectiveDone = list.map((d) => (d.text in overrides ? overrides[d.text] : d.done));
   const done = effectiveDone.filter(Boolean).length;
 
@@ -151,9 +161,86 @@ function renderDeliverables(list, projectId) {
     .join("");
 
   return `
-    <div class="dialog-section">
-      <h4 class="dialog-label">Deliverable <span class="deliverable-count">${done}/${list.length}</span></h4>
-      <ul class="deliverables" data-project="${escapeHtml(projectId)}">${items}</ul>
+    <div class="stage-deliverables">
+      <h5 class="dialog-label">Deliverable <span class="deliverable-count">${done}/${list.length}</span></h5>
+      <ul class="deliverables" data-project="${escapeHtml(projectId)}" data-stage="${escapeHtml(stageKey)}">${items}</ul>
+    </div>
+  `;
+}
+
+function renderStageAnswers(stageKey, answers) {
+  const questions = questionsFor(stageKey);
+  if (!questions.length) return "";
+
+  const items = questions
+    .map((item, i) => {
+      const answer = answers && answers[i];
+      return `
+      <div class="qa-item">
+        <p class="intake-q">${escapeHtml(item.q)}</p>
+        ${
+          answer
+            ? `<p class="qa-answer">${escapeHtml(answer)}</p>`
+            : `<p class="qa-answer qa-empty">Nessuna risposta ancora.</p>`
+        }
+        <p class="intake-ref">${escapeHtml(item.ref)}</p>
+      </div>`;
+    })
+    .join("");
+
+  return `<div class="qa-list">${items}</div>`;
+}
+
+function renderStageQuestionsOnly(stageKey) {
+  const questions = questionsFor(stageKey);
+  if (!questions.length) return "";
+
+  const items = questions
+    .map(
+      (item) => `
+      <li>
+        <p class="intake-q">${escapeHtml(item.q)}</p>
+        <p class="intake-ref">${escapeHtml(item.ref)}</p>
+      </li>`
+    )
+    .join("");
+
+  return `<ol class="intake-list intake-list-preview">${items}</ol>`;
+}
+
+function renderAccordionSection(project, stageDef) {
+  const reached = stageIndex(stageDef.key) <= stageIndex(project.stage);
+  const isCurrent = stageDef.key === project.stage;
+  const stageData = (project.stages && project.stages[stageDef.key]) || null;
+
+  const lockBadge = !reached ? `<span class="lock-badge">${LOCK_SVG}Non ancora raggiunta</span>` : "";
+
+  const updatedLine =
+    reached && stageData && stageData.updated
+      ? `<p class="accordion-updated">Aggiornato ${escapeHtml(stageData.updated)}</p>`
+      : "";
+
+  const body = reached
+    ? `${updatedLine}${renderStageAnswers(stageDef.key, stageData && stageData.answers)}${
+        stageData && stageData.deliverables ? renderDeliverables(stageData.deliverables, project.id, stageDef.key) : ""
+      }${stageDef.key === "revenue" ? renderRevenueLine(project) : ""}`
+    : renderStageQuestionsOnly(stageDef.key);
+
+  return `
+    <div class="accordion-section${isCurrent ? " is-open" : ""}" data-stage="${stageDef.key}">
+      <button class="accordion-header" type="button" aria-expanded="${isCurrent ? "true" : "false"}">
+        <span class="accordion-header-left">
+          <span class="stage-dot" style="--dot-color:${stageDef.color}"></span>
+          <span class="accordion-label">${stageDef.label}</span>
+          ${lockBadge}
+        </span>
+        <span class="chevron" aria-hidden="true">${CHEVRON_SVG}</span>
+      </button>
+      <div class="accordion-body-wrap">
+        <div class="accordion-body">
+          <div class="accordion-body-inner">${body}</div>
+        </div>
+      </div>
     </div>
   `;
 }
@@ -167,7 +254,7 @@ function renderProjectCard(project) {
       <p class="card-desc">${escapeHtml(project.description)}</p>
       ${renderStepper(project.stage)}
       ${renderRevenueLine(project)}
-      ${project.notes ? `<p class="card-notes">${escapeHtml(project.notes)}</p>` : ""}
+      ${project.summary ? `<p class="card-notes">${escapeHtml(project.summary)}</p>` : ""}
       <div class="card-footer">
         <span class="badge" style="--dot-color:${stage.color}">${stage.label}</span>
         <span class="card-updated">${project.updated ? "Aggiornato " + escapeHtml(project.updated) : ""}</span>
@@ -180,6 +267,7 @@ function renderProjectCard(project) {
 function renderProjectDialog(project) {
   const stage = STAGES[stageIndex(project.stage)];
   const links = renderLinks(project.links);
+  const accordion = STAGES.map((s) => renderAccordionSection(project, s)).join("");
 
   return `
     <span class="badge" style="--dot-color:${stage.color}">${stage.label}</span>
@@ -188,20 +276,8 @@ function renderProjectDialog(project) {
 
     ${renderStepper(project.stage)}
 
-    <div class="dialog-section">
-      <h4 class="dialog-label">Stato del progetto</h4>
-      <p class="dialog-text">${escapeHtml(project.status || "Nessun dettaglio ancora.")}</p>
-    </div>
+    <div class="accordion">${accordion}</div>
 
-    <div class="dialog-section">
-      <h4 class="dialog-label">Ultimo aggiornamento</h4>
-      <p class="dialog-text">
-        ${project.updated ? `<strong>${escapeHtml(project.updated)}</strong> — ` : ""}${escapeHtml(project.notes || "—")}
-      </p>
-    </div>
-
-    ${renderDeliverables(project.deliverables, project.id)}
-    ${renderRevenueLine(project)}
     ${links ? `<div class="card-links">${links}</div>` : ""}
   `;
 }
@@ -209,16 +285,14 @@ function renderProjectDialog(project) {
 function renderNewProjectDialog() {
   const groups = INTAKE_QUESTIONS.map((group) => {
     const stage = STAGES[stageIndex(group.stage)];
-    let counter = 0;
     const items = group.questions
-      .map((item) => {
-        counter += 1;
-        return `
+      .map(
+        (item) => `
         <li>
           <p class="intake-q">${escapeHtml(item.q)}</p>
           <p class="intake-ref">${escapeHtml(item.ref)}</p>
-        </li>`;
-      })
+        </li>`
+      )
       .join("");
 
     return `
@@ -328,22 +402,35 @@ async function init() {
   function toggleDeliverable(li) {
     const list = li.closest(".deliverables");
     const projectId = list.dataset.project;
+    const stageKey = list.dataset.stage;
     const nowDone = !li.classList.contains("is-done");
 
-    saveOverride(projectId, li.dataset.text, nowDone);
+    saveOverride(projectId, stageKey, li.dataset.text, nowDone);
     li.classList.toggle("is-done", nowDone);
     li.setAttribute("aria-checked", String(nowDone));
     li.querySelector(".deliverable-check").innerHTML = nowDone ? "&#10003;" : "";
 
     const total = list.querySelectorAll(".deliverable").length;
     const done = list.querySelectorAll(".deliverable.is-done").length;
-    const countEl = list.closest(".dialog-section").querySelector(".deliverable-count");
+    const countEl = list.closest(".stage-deliverables").querySelector(".deliverable-count");
     if (countEl) countEl.textContent = `${done}/${total}`;
+  }
+
+  function toggleAccordion(header) {
+    const section = header.closest(".accordion-section");
+    const nowOpen = !section.classList.contains("is-open");
+    section.classList.toggle("is-open", nowOpen);
+    header.setAttribute("aria-expanded", String(nowOpen));
   }
 
   dialogContent.addEventListener("click", (e) => {
     const li = e.target.closest(".deliverable");
-    if (li) toggleDeliverable(li);
+    if (li) {
+      toggleDeliverable(li);
+      return;
+    }
+    const header = e.target.closest(".accordion-header");
+    if (header) toggleAccordion(header);
   });
 
   dialogContent.addEventListener("keydown", (e) => {
