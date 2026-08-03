@@ -166,7 +166,7 @@ body {
 
 .brand-icon {
   flex: none;
-  color: var(--primary);
+  object-fit: contain;
 }
 
 .topbar h1 {
