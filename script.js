@@ -264,7 +264,7 @@ function renderStageAnswers(stageKey, answers) {
         <p class="intake-q">${escapeHtml(item.q)}</p>
         ${
           answer
-            ? `<p class="qa-answer">${escapeHtml(answer)}</p>`
+            ? `<div class="qa-answer idea-note">${renderMarkdown(answer)}</div>`
             : `<p class="qa-answer qa-empty">Nessuna risposta ancora.</p>`
         }
         <p class="intake-ref">${escapeHtml(item.ref)}</p>
