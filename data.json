@@ -47,6 +47,54 @@
         "notes": ""
       },
       "links": []
+    },
+    {
+      "id": "deal-check",
+      "name": "Deal Check",
+      "description": "Web app che aiuta founder early-stage a capire quanta equity cedere in un round e a prepararsi alla negoziazione, confrontando pre-money/post-money/equity% con benchmark reali di mercato.",
+      "stage": "wip",
+      "updated": "2026-08-03",
+      "summary": "In uso quotidiano per negoziare il round della mia startup; benchmark statici (US/EU/Italia) da aggiornare a mano, prossimo passo è capire se aprirlo oltre l'uso interno.",
+      "stages": {
+        "ideation": {
+          "updated": "2026-08-03",
+          "answers": [
+            "Founder early-stage (Friends & Family → Series A) che devono negoziare equity/valutazione per la prima volta — l'ho scelto perché sono io stesso il caso d'uso: mi serviva capire, per la mia startup, quanta equity cedere senza farmi fregare in trattativa.",
+            "Trasformare un'offerta di investimento in numeri leggibili (pre-money, post-money, equity%) e in un verdetto immediato (red flag / ok) rispetto ai benchmark di mercato, usato nel momento esatto in cui il founder deve decidere se firmare o negoziare un term sheet.",
+            "Non esiste un equivalente italiano di Carta o PitchBook per benchmark di equity early-stage; oggi i founder si affidano a commercialista/avvocato o a spreadsheet fatti a mano — vinco dando un verdetto visivo immediato più scenari di negoziazione pronti, gratis e senza consulenza.",
+            "Che i founder early-stage non sappiano leggere pre-money/post-money/equity% e abbiano bisogno di un verdetto immediato più che delle formule; testata solo su me stesso finora — nessuna intervista ad altri founder ancora fatta."
+          ],
+          "deliverables": [
+            { "text": "Individuare il segmento beachhead", "done": true },
+            { "text": "Parlare con 3-5 founder del segmento", "done": false },
+            { "text": "Mappare i competitor diretti/indiretti", "done": false },
+            { "text": "Validare l'assunzione chiave con qualcuno oltre me", "done": false }
+          ]
+        },
+        "wip": {
+          "updated": "2026-08-03",
+          "answers": [
+            "Web app fatta con Lovable, già live e in uso quotidiano per il round della mia startup: 4 tab — Calculator (pre-money/post-money/investment/equity%, con verdetto red-flag/ok su benchmark US/EU/Italia per stage F&F→Series A), Scenarios (ladder di negoziazione a 3 scenari + margine di negoziazione illustrativo), Checklist (12 domande di preparazione/valutazione/termini, collegata al Runway), Runway (mesi di cash residui, proiezione statica o dinamica). Benchmark statici, validati una volta con una ricerca dedicata, da riaggiornare periodicamente a mano.",
+            "Per ora nessun canale: strumento solo interno, zero utenti esterni, zero flusso di acquisizione.",
+            "Nessuno per ora, uso interno gratuito. Idea futura: tier a pagamento con chatbot AI — il founder carica documenti/dati sulla sua startup, il tool restituisce la stessa analisi ma tailored sul suo mercato e sui deal reali, invece dei benchmark statici."
+          ],
+          "deliverables": [
+            { "text": "MVP funzionante, 4 tab live su Lovable", "done": true },
+            { "text": "Validazione benchmark e soglie con ricerca dedicata", "done": true },
+            { "text": "Aggiornare i benchmark su fonti tracciate quando invecchiano", "done": false },
+            { "text": "Validare il tool con 2-3 founder esterni", "done": false },
+            { "text": "Decidere se/come aprirlo oltre l'uso interno (pricing, landing, chatbot AI)", "done": false }
+          ]
+        }
+      },
+      "revenue": {
+        "status": "none",
+        "amount": "",
+        "notes": ""
+      },
+      "links": [
+        { "label": "Lovable", "url": "https://lovable.dev/projects/c77b3650-8e26-4591-afa6-bc35ee6e991b" }
+      ]
     }
   ],
   "ideas": [
