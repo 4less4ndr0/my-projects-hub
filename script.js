@@ -1,8 +1,8 @@
 const STAGES = [
-  { key: "ideation", label: "Ideation", color: "var(--stage-ideation)" },
-  { key: "wip", label: "Work in progress", color: "var(--stage-wip)" },
-  { key: "shipment", label: "Shipment", color: "var(--stage-shipment)" },
-  { key: "revenue", label: "Revenue", color: "var(--stage-revenue)" },
+  { key: "ideation", label: "Ideation", color: "var(--chart-1)" },
+  { key: "wip", label: "Work in progress", color: "var(--chart-2)" },
+  { key: "shipment", label: "Shipment", color: "var(--chart-3)" },
+  { key: "revenue", label: "Revenue", color: "var(--chart-4)" },
 ];
 
 const REVENUE_LABELS = {
