@@ -90,12 +90,6 @@
       "title": "Not For Challenge",
       "note": "L'idea è un sistema per fare gare, corse o camminate dentro spazi fisici (un campus tipo H-Farm College, un parco, i piani di un palazzo) usando solo tag NFC, senza bisogno di nessuna app. Lungo il percorso si posizionano dei tag: uno di partenza, uno di arrivo e delle tappe intermedie, che vanno scansionati in ordine — per validare una tappa devi aver già validato quella prima, ed è questo il meccanismo anti-cheater (altrimenti basterebbe scansionare solo l'ultimo tag per \"finire\" la gara senza averla fatta davvero). Chi completa il percorso finisce in una classifica online con tempi e record, un po' come Strava ma via semplice pagina web invece che con un'app. Si può partecipare in modo anonimo con un codice, oppure creare un account per tenere traccia dei propri progressi: l'obiettivo è avere zero frizione (niente download, niente registrazione obbligatoria) per renderlo facile da usare e virale. Il nome gioca sull'acronimo NFC: \"Not For Challenge\". Stato attuale, con Leo Puglisi: abbiamo già una ventina di tag NFC inutilizzati; mancano ancora la pagina Notion per buttare giù le idee, l'architettura tecnica del sistema e la pagina della classifica (pensata da costruire con Lovable). Obiettivo: strutturare le fondamenta ad agosto.",
       "added": "2026-08-03"
-    },
-    {
-      "id": "reminder-scadenze-fiscali-freelance-uhkv",
-      "title": "Reminder scadenze fiscali freelance",
-      "note": "Un'app che invia notifiche per avvertire dei prossimi adempimenti fiscali e scadenze importanti per i lavoratori autonomi, aiutando a non dimenticare pagamenti e dichiarazioni.",
-      "added": "2026-08-03"
     }
   ]
 }
