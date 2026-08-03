@@ -7,7 +7,16 @@
       "description": "Questa è una card di esempio: sostituiscila (o cancellala) con il primo progetto reale.",
       "stage": "wip",
       "updated": "2026-08-03",
-      "notes": "Ultimo aggiornamento: sto lavorando alla prima versione funzionante.",
+      "notes": "Sto lavorando alla prima versione funzionante.",
+      "status": "Il core dell'app funziona in locale: onboarding e flusso principale sono completi. Manca la parte di pagamenti e un giro di test con 2-3 utenti reali prima di poter pensare allo shipment.",
+      "deliverables": [
+        { "text": "Wireframe e validazione dell'idea", "done": true },
+        { "text": "Setup progetto e primo deploy locale", "done": true },
+        { "text": "Flusso di onboarding utente", "done": true },
+        { "text": "Integrazione pagamenti", "done": false },
+        { "text": "Test con 2-3 utenti reali", "done": false },
+        { "text": "Landing page pubblica", "done": false }
+      ],
       "revenue": {
         "status": "none",
         "amount": "",

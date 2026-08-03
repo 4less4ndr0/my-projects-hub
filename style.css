@@ -227,6 +227,20 @@ body {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
   padding: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--ring);
+  box-shadow: 0 4px 14px 0 oklch(0.26 0.06 258 / 0.12);
+  transform: translateY(-1px);
+}
+
+.card:focus-visible {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent);
 }
 
 .card-title {
@@ -429,4 +443,158 @@ body {
   font-size: var(--text-xs);
   padding: 1.5rem;
   border-top: 1px solid var(--border);
+}
+
+/* ---------- project detail dialog (shadcn Dialog: overlay + centered content) ---------- */
+
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 3rem 1rem;
+  background: oklch(0.1 0.03 258 / 0.6);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.dialog-overlay[hidden] {
+  display: none;
+}
+
+.dialog-overlay.is-open {
+  opacity: 1;
+}
+
+.dialog {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transform: translateY(8px) scale(0.98);
+  transition: transform 0.15s ease;
+}
+
+.dialog-overlay.is-open .dialog {
+  transform: translateY(0) scale(1);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  color: var(--muted-foreground);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dialog-close:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border-color: var(--accent);
+}
+
+.dialog-close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent);
+}
+
+.dialog-title {
+  margin: 0.1rem 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding-right: 1.5rem;
+}
+
+.dialog-section {
+  border-top: 1px solid var(--border);
+  padding-top: 0.9rem;
+}
+
+.dialog-label {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+}
+
+.deliverable-count {
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--foreground);
+}
+
+.dialog-text {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+
+.deliverables {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.deliverable {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: var(--text-sm);
+  color: var(--foreground);
+}
+
+.deliverable-check {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--primary-foreground);
+}
+
+.deliverable.is-done {
+  color: var(--muted-foreground);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in oklch, var(--muted-foreground) 60%, transparent);
+}
+
+.deliverable.is-done .deliverable-check {
+  background: var(--primary);
+  border-color: var(--primary);
 }
