@@ -134,6 +134,7 @@ body {
   height: 30px;
   color: var(--primary);
   opacity: 0;
+  transform: rotate(84deg);
   pointer-events: none;
 }
 
@@ -144,10 +145,10 @@ body {
 }
 
 @keyframes plane-flyby {
-  0%, 78% { left: -8%; top: 62%; opacity: 0; transform: rotate(0deg); }
-  82% { left: 6%; top: 55%; opacity: 0.9; transform: rotate(-6deg); }
-  94% { left: 100%; top: 14%; opacity: 0.9; transform: rotate(-6deg); }
-  97%, 100% { left: 106%; top: 10%; opacity: 0; transform: rotate(-6deg); }
+  0%, 78% { left: -8%; top: 62%; opacity: 0; }
+  82% { left: 6%; top: 55%; opacity: 0.9; }
+  94% { left: 100%; top: 14%; opacity: 0.9; }
+  97%, 100% { left: 106%; top: 10%; opacity: 0; }
 }
 
 .topbar-inner,
