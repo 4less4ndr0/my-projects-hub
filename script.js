@@ -5,6 +5,65 @@ const STAGES = [
   { key: "revenue", label: "Revenue", color: "var(--chart-4)" },
 ];
 
+const INTAKE_QUESTIONS = [
+  {
+    stage: "ideation",
+    questions: [
+      {
+        q: "Chi è il tuo segmento di mercato iniziale (beachhead) e perché proprio quello?",
+        ref: "Market Segmentation, Primary Market Research, Select Beachhead Market, Build End User Profile, TAM for Beachhead Market, Persona Profile for Beachhead Market",
+      },
+      {
+        q: "Qual è il valore critico che risolvi per questo cliente, e in quale momento del suo ciclo di vita lo usa?",
+        ref: "Life Cycle Use Case, Quantify Value Proposition, Define the Core",
+      },
+      {
+        q: "Chi è il tuo competitor più vicino e perché il cliente sceglierebbe te?",
+        ref: "Your Competitive Position (Competitive Analysis)",
+      },
+      {
+        q: "Quali sono le assunzioni chiave su cui si regge l'idea, e le hai già testate?",
+        ref: "Identify Key Assumptions, Test Key Assumptions",
+      },
+    ],
+  },
+  {
+    stage: "wip",
+    questions: [
+      {
+        q: "Cos'è il tuo MVP, cosa include e a che punto sei nel costruirlo?",
+        ref: "Define the MVP, Develop a Product Plan, Product Specification",
+      },
+      {
+        q: "Come il cliente scopre, decide e acquista la tua soluzione?",
+        ref: "Determine Customer Decision-Making Unit, Map the Process to Acquire a Paying Customer, Windows of Opportunity and Triggers, Identify Next 10 Customers",
+      },
+      {
+        q: "Come pensi di guadagnare (modello di business, prezzo, LTV vs costo di acquisizione)?",
+        ref: "Design Business Model, Set Pricing Framework, Calculate LTV of Acquired Customer, Calculate of CoCA, Design a Scalable Revenue Engine",
+      },
+    ],
+  },
+  {
+    stage: "shipment",
+    questions: [
+      {
+        q: "Hai una prova concreta che il prodotto funziona — utenti reali che lo usano/pagano?",
+        ref: 'Show that "The Dogs Will Eat the Dog Food"',
+      },
+    ],
+  },
+  {
+    stage: "revenue",
+    questions: [
+      {
+        q: "Qual è il potenziale sui mercati successivi e come pensi di scalare il business?",
+        ref: "Calculate TAM for Follow-on Markets, Design a Scalable Revenue Engine",
+      },
+    ],
+  },
+];
+
 const REVENUE_LABELS = {
   none: "Nessuna revenue ancora",
   early: "Prime entrate",
@@ -147,6 +206,39 @@ function renderProjectDialog(project) {
   `;
 }
 
+function renderNewProjectDialog() {
+  const groups = INTAKE_QUESTIONS.map((group) => {
+    const stage = STAGES[stageIndex(group.stage)];
+    let counter = 0;
+    const items = group.questions
+      .map((item) => {
+        counter += 1;
+        return `
+        <li>
+          <p class="intake-q">${escapeHtml(item.q)}</p>
+          <p class="intake-ref">${escapeHtml(item.ref)}</p>
+        </li>`;
+      })
+      .join("");
+
+    return `
+      <div class="dialog-section">
+        <h4 class="stage-heading" style="--dot-color:${stage.color}">${stage.label}</h4>
+        <ol class="intake-list">${items}</ol>
+      </div>
+    `;
+  }).join("");
+
+  return `
+    <h2 id="dialog-title" class="dialog-title">Domande per un nuovo progetto</h2>
+    <p class="card-desc">
+      Rispondi a queste domande — anche solo a mente o su un foglio — poi passami le risposte in chat:
+      le uso per creare la card e per capire in quale stage inserirla.
+    </p>
+    ${groups}
+  `;
+}
+
 function renderIdeaCard(idea) {
   return `
     <div class="idea-card">
@@ -167,6 +259,7 @@ async function init() {
   const dialogOverlay = document.getElementById("project-dialog-overlay");
   const dialogContent = document.getElementById("dialog-content");
   const dialogClose = document.getElementById("dialog-close");
+  const addProjectBtn = document.getElementById("add-project-btn");
 
   function renderProjects(filter) {
     const list = data.projects.filter((p) => filter === "all" || p.stage === filter);
@@ -175,12 +268,16 @@ async function init() {
       : `<p class="empty-state">Nessun progetto in questo stage.</p>`;
   }
 
-  function openDialog(project) {
-    dialogContent.innerHTML = renderProjectDialog(project);
+  function showDialog(html) {
+    dialogContent.innerHTML = html;
     dialogOverlay.hidden = false;
     document.body.style.overflow = "hidden";
     requestAnimationFrame(() => dialogOverlay.classList.add("is-open"));
     dialogClose.focus();
+  }
+
+  function openDialog(project) {
+    showDialog(renderProjectDialog(project));
   }
 
   function closeDialog() {
@@ -256,6 +353,8 @@ async function init() {
     e.preventDefault();
     toggleDeliverable(li);
   });
+
+  addProjectBtn.addEventListener("click", () => showDialog(renderNewProjectDialog()));
 
   dialogClose.addEventListener("click", closeDialog);
   dialogOverlay.addEventListener("click", (e) => {

@@ -208,6 +208,35 @@ body {
   border-color: transparent;
 }
 
+.add-project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-left: auto;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: var(--accent-foreground);
+  font-size: 1.15rem;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add-project-btn:hover {
+  box-shadow: 0 4px 14px 0 color-mix(in oklch, var(--accent) 45%, transparent);
+  transform: translateY(-1px);
+}
+
+.add-project-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent);
+}
+
 /* ---------- project cards (shadcn Card) ---------- */
 
 .projects-grid {
@@ -629,4 +658,57 @@ body {
 .deliverable.is-done .deliverable-check {
   background: var(--primary);
   border-color: var(--primary);
+}
+
+/* ---------- new-project intake reference (static questions, no inputs) ---------- */
+
+.stage-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+.stage-heading::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot-color, var(--foreground));
+}
+
+.intake-list {
+  list-style: decimal;
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.intake-list li::marker {
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+
+.intake-q {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.intake-ref {
+  margin: 0.3rem 0 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--muted-foreground);
+  line-height: 1.4;
 }
