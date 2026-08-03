@@ -261,7 +261,7 @@ function renderStageAnswers(stageKey, answers) {
       const answer = answers && answers[i];
       return `
       <div class="qa-item">
-        <p class="intake-q">${escapeHtml(item.q)}</p>
+        <h3 class="intake-q">${escapeHtml(item.q)}</h3>
         ${
           answer
             ? `<div class="qa-answer idea-note">${renderMarkdown(answer)}</div>`
@@ -283,7 +283,7 @@ function renderStageQuestionsOnly(stageKey) {
     .map(
       (item) => `
       <li>
-        <p class="intake-q">${escapeHtml(item.q)}</p>
+        <h3 class="intake-q">${escapeHtml(item.q)}</h3>
         <p class="intake-ref">${escapeHtml(item.ref)}</p>
       </li>`
     )
@@ -374,7 +374,7 @@ function renderNewProjectDialog() {
       .map(
         (item) => `
         <li>
-          <p class="intake-q">${escapeHtml(item.q)}</p>
+          <h3 class="intake-q">${escapeHtml(item.q)}</h3>
           <p class="intake-ref">${escapeHtml(item.ref)}</p>
         </li>`
       )
