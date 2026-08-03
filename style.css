@@ -926,3 +926,51 @@ body {
 .intake-list-preview {
   margin: 0;
 }
+
+/* ---------- idea note markdown (idea detail dialog) ---------- */
+
+.idea-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.idea-note-p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+.idea-note-heading {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.idea-note-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.idea-note-list li {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--foreground);
+}
+
+.idea-note strong {
+  font-weight: 600;
+}
+
+.idea-note a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}

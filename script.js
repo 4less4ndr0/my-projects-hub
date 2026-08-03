@@ -94,6 +94,84 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function stripMarkdownToPlainText(text) {
+  return (text || "")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/\*(.+?)\*/g, "$1")
+    .replace(/^[-*]\s+/gm, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function renderInlineMarkdown(text) {
+  let html = escapeHtml(text);
+  html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  html = html.replace(/\*(.+?)\*/g, "<em>$1</em>");
+  html = html.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+  return html;
+}
+
+function renderMarkdown(markdown) {
+  const lines = (markdown || "").split(/\r?\n/);
+  const blocks = [];
+  let paragraphLines = [];
+  let listItems = [];
+
+  function flushParagraph() {
+    if (paragraphLines.length) {
+      blocks.push({ type: "p", text: paragraphLines.join(" ") });
+      paragraphLines = [];
+    }
+  }
+  function flushList() {
+    if (listItems.length) {
+      blocks.push({ type: "ul", items: listItems.slice() });
+      listItems = [];
+    }
+  }
+
+  lines.forEach((rawLine) => {
+    const line = rawLine.trim();
+    if (line === "") {
+      flushParagraph();
+      flushList();
+      return;
+    }
+    const headingMatch = line.match(/^(#{1,3})\s+(.+)$/);
+    if (headingMatch) {
+      flushParagraph();
+      flushList();
+      blocks.push({ type: "h" + (headingMatch[1].length + 2), text: headingMatch[2] });
+      return;
+    }
+    const listMatch = line.match(/^[-*]\s+(.+)$/);
+    if (listMatch) {
+      flushParagraph();
+      listItems.push(listMatch[1]);
+      return;
+    }
+    flushList();
+    paragraphLines.push(line);
+  });
+  flushParagraph();
+  flushList();
+
+  return blocks
+    .map((block) => {
+      if (block.type === "ul") {
+        return `<ul class="idea-note-list">${block.items
+          .map((item) => `<li>${renderInlineMarkdown(item)}</li>`)
+          .join("")}</ul>`;
+      }
+      if (block.type[0] === "h") {
+        return `<${block.type} class="idea-note-heading">${renderInlineMarkdown(block.text)}</${block.type}>`;
+      }
+      return `<p class="idea-note-p">${renderInlineMarkdown(block.text)}</p>`;
+    })
+    .join("");
+}
+
 function renderStepper(currentStage) {
   const currentIdx = stageIndex(currentStage);
   const steps = STAGES.map((stage, i) => {
@@ -324,7 +402,7 @@ function renderIdeaCard(idea) {
   return `
     <div class="idea-card" data-id="${escapeHtml(idea.id)}" tabindex="0" role="button" aria-haspopup="dialog">
       <h3>${escapeHtml(idea.title)}</h3>
-      <p>${escapeHtml(idea.note)}</p>
+      <p>${escapeHtml(stripMarkdownToPlainText(idea.note))}</p>
       <time>${idea.added ? "Aggiunta " + escapeHtml(idea.added) : ""}</time>
     </div>
   `;
@@ -333,7 +411,7 @@ function renderIdeaCard(idea) {
 function renderIdeaDialog(idea) {
   return `
     <h2 id="dialog-title" class="dialog-title">${escapeHtml(idea.title)}</h2>
-    <p class="card-desc">${escapeHtml(idea.note)}</p>
+    <div class="idea-note">${renderMarkdown(idea.note)}</div>
     <time class="card-updated">${idea.added ? "Aggiunta " + escapeHtml(idea.added) : ""}</time>
   `;
 }
