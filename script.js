@@ -1,8 +1,8 @@
 const STAGES = [
-  { key: "ideation", label: "Ideation", color: "var(--chart-1)" },
-  { key: "wip", label: "Work in progress", color: "var(--chart-2)" },
-  { key: "shipment", label: "Shipment", color: "var(--chart-3)" },
-  { key: "revenue", label: "Revenue", color: "var(--chart-4)" },
+  { key: "ideation", label: "Imbarco", color: "var(--chart-1)" },
+  { key: "wip", label: "Decollo", color: "var(--chart-2)" },
+  { key: "shipment", label: "Quota di crociera", color: "var(--chart-3)" },
+  { key: "revenue", label: "Atterraggio", color: "var(--chart-4)" },
 ];
 
 const INTAKE_QUESTIONS = [
@@ -162,7 +162,7 @@ function renderDeliverables(list, projectId, stageKey) {
 
   return `
     <div class="stage-deliverables">
-      <h5 class="dialog-label">Deliverable <span class="deliverable-count">${done}/${list.length}</span></h5>
+      <h5 class="dialog-label">Checklist <span class="deliverable-count">${done}/${list.length}</span></h5>
       <ul class="deliverables" data-project="${escapeHtml(projectId)}" data-stage="${escapeHtml(stageKey)}">${items}</ul>
     </div>
   `;
@@ -213,11 +213,11 @@ function renderAccordionSection(project, stageDef) {
   const isCurrent = stageDef.key === project.stage;
   const stageData = (project.stages && project.stages[stageDef.key]) || null;
 
-  const lockBadge = !reached ? `<span class="lock-badge">${LOCK_SVG}Non ancora raggiunta</span>` : "";
+  const lockBadge = !reached ? `<span class="lock-badge">${LOCK_SVG}Prossima tappa</span>` : "";
 
   const updatedLine =
     reached && stageData && stageData.updated
-      ? `<p class="accordion-updated">Aggiornato ${escapeHtml(stageData.updated)}</p>`
+      ? `<p class="accordion-updated">Check-in ${escapeHtml(stageData.updated)}</p>`
       : "";
 
   const body = reached
@@ -257,7 +257,7 @@ function renderProjectCard(project) {
       ${project.summary ? `<p class="card-notes">${escapeHtml(project.summary)}</p>` : ""}
       <div class="card-footer">
         <span class="badge" style="--dot-color:${stage.color}">${stage.label}</span>
-        <span class="card-updated">${project.updated ? "Aggiornato " + escapeHtml(project.updated) : ""}</span>
+        <span class="card-updated">${project.updated ? "Check-in " + escapeHtml(project.updated) : ""}</span>
       </div>
       ${project.links && project.links.length ? `<div class="card-links">${renderLinks(project.links)}</div>` : ""}
     </article>
@@ -304,10 +304,10 @@ function renderNewProjectDialog() {
   }).join("");
 
   return `
-    <h2 id="dialog-title" class="dialog-title">Domande per un nuovo progetto</h2>
+    <h2 id="dialog-title" class="dialog-title">Piano di volo</h2>
     <p class="card-desc">
       Rispondi a queste domande — anche solo a mente o su un foglio — poi passami le risposte in chat:
-      le uso per creare la card e per capire in quale stage inserirla.
+      le uso per creare la card e per capire in quale fase inserirla.
     </p>
     ${groups}
   `;
@@ -339,7 +339,7 @@ async function init() {
     const list = data.projects.filter((p) => filter === "all" || p.stage === filter);
     projectsEl.innerHTML = list.length
       ? list.map(renderProjectCard).join("")
-      : `<p class="empty-state">Nessun progetto in questo stage.</p>`;
+      : `<p class="empty-state">Nessun volo in questa fase.</p>`;
   }
 
   function showDialog(html) {
@@ -371,10 +371,10 @@ async function init() {
 
   ideasEl.innerHTML = (data.ideas || []).length
     ? data.ideas.map(renderIdeaCard).join("")
-    : `<p class="empty-state">Il bacino delle idee è vuoto.</p>`;
+    : `<p class="empty-state">L'hangar è vuoto.</p>`;
 
   if (data.updated) {
-    lastUpdatedEl.textContent = `Ultimo aggiornamento dati: ${data.updated}`;
+    lastUpdatedEl.textContent = `Ultimo controllo torre: ${data.updated}`;
   }
 
   document.querySelectorAll(".filter-btn").forEach((btn) => {
