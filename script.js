@@ -76,6 +76,9 @@ const CHEVRON_SVG =
 const LOCK_SVG =
   '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 
+const EXTERNAL_LINK_SVG =
+  '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
 function stageIndex(key) {
   const i = STAGES.findIndex((s) => s.key === key);
   return i === -1 ? 0 : i;
@@ -113,7 +116,10 @@ function renderStepper(currentStage) {
 
 function renderLinks(links) {
   return (links || [])
-    .map((l) => `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`)
+    .map(
+      (l) =>
+        `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}${EXTERNAL_LINK_SVG}</a>`
+    )
     .join("");
 }
 
@@ -271,14 +277,15 @@ function renderProjectDialog(project) {
 
   return `
     <span class="badge" style="--dot-color:${stage.color}">${stage.label}</span>
-    <h2 id="dialog-title" class="dialog-title">${escapeHtml(project.name)}</h2>
+    <div class="dialog-title-row">
+      <h2 id="dialog-title" class="dialog-title">${escapeHtml(project.name)}</h2>
+      ${links ? `<div class="card-links">${links}</div>` : ""}
+    </div>
     <p class="card-desc">${escapeHtml(project.description)}</p>
 
     ${renderStepper(project.stage)}
 
     <div class="accordion">${accordion}</div>
-
-    ${links ? `<div class="card-links">${links}</div>` : ""}
   `;
 }
 
