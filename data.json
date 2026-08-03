@@ -46,7 +46,8 @@
         "notes": ""
       },
       "links": [
-        { "label": "Lovable", "url": "https://lovable.dev/projects/c77b3650-8e26-4591-afa6-bc35ee6e991b" }
+        { "label": "Lovable", "url": "https://lovable.dev/projects/c77b3650-8e26-4591-afa6-bc35ee6e991b" },
+        { "label": "Repo", "url": "https://github.com/4less4ndr0/deal-guard" }
       ]
     }
   ],
