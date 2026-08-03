@@ -296,8 +296,8 @@ body {
   gap: 0.25rem;
 }
 
-.dialog > .stepper {
-  margin-top: 0.4rem;
+#dialog-content > .stepper {
+  margin-top: 0.3rem;
 }
 
 .step {
@@ -525,11 +525,14 @@ body {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
   padding: 2.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
   transform: translateY(8px) scale(0.98);
   transition: transform 0.15s ease;
+}
+
+#dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
 
 .dialog-overlay.is-open .dialog {
