@@ -267,6 +267,10 @@ body {
   gap: 0.25rem;
 }
 
+.dialog > .stepper {
+  margin-top: 0.4rem;
+}
+
 .step {
   flex: 1;
   height: 6px;
@@ -284,14 +288,27 @@ body {
 }
 
 .stage-labels {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
   font-family: var(--font-display);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   color: var(--muted-foreground);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   font-weight: 500;
+}
+
+.stage-labels span {
+  text-align: center;
+}
+
+.stage-labels span:first-child {
+  text-align: left;
+}
+
+.stage-labels span:last-child {
+  text-align: right;
 }
 
 .stage-labels span.is-active {
