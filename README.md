@@ -28,4 +28,4 @@ Tutti i contenuti vivono in [`data.json`](data.json). Non c'è build né backend
 
 ## Pubblicazione
 
-Sito statico servito via GitHub Pages dal branch `main` (cartella root).
+Sito statico servito via GitHub Pages dal branch `main` (cartella root): **https://4less4ndr0.github.io/my-projects-hub/**
