@@ -56,23 +56,45 @@ function renderRevenueLine(project) {
   }${revenue.notes ? ` · ${escapeHtml(revenue.notes)}` : ""}</p>`;
 }
 
-function renderDeliverables(list) {
+function overridesKey(projectId) {
+  return `projects-hub:deliverables:${projectId}`;
+}
+
+function loadOverrides(projectId) {
+  try {
+    return JSON.parse(localStorage.getItem(overridesKey(projectId))) || {};
+  } catch {
+    return {};
+  }
+}
+
+function saveOverride(projectId, text, done) {
+  const overrides = loadOverrides(projectId);
+  overrides[text] = done;
+  localStorage.setItem(overridesKey(projectId), JSON.stringify(overrides));
+}
+
+function renderDeliverables(list, projectId) {
   if (!list || !list.length) return "";
-  const done = list.filter((d) => d.done).length;
+  const overrides = loadOverrides(projectId);
+  const effectiveDone = list.map((d) => (d.text in overrides ? overrides[d.text] : d.done));
+  const done = effectiveDone.filter(Boolean).length;
+
   const items = list
-    .map(
-      (d) => `
-      <li class="deliverable${d.done ? " is-done" : ""}">
-        <span class="deliverable-check" aria-hidden="true">${d.done ? "&#10003;" : ""}</span>
+    .map((d, i) => {
+      const isDone = effectiveDone[i];
+      return `
+      <li class="deliverable${isDone ? " is-done" : ""}" role="checkbox" aria-checked="${isDone}" tabindex="0" data-text="${escapeHtml(d.text)}">
+        <span class="deliverable-check" aria-hidden="true">${isDone ? "&#10003;" : ""}</span>
         <span>${escapeHtml(d.text)}</span>
-      </li>`
-    )
+      </li>`;
+    })
     .join("");
 
   return `
     <div class="dialog-section">
       <h4 class="dialog-label">Deliverable <span class="deliverable-count">${done}/${list.length}</span></h4>
-      <ul class="deliverables">${items}</ul>
+      <ul class="deliverables" data-project="${escapeHtml(projectId)}">${items}</ul>
     </div>
   `;
 }
@@ -119,7 +141,7 @@ function renderProjectDialog(project) {
       </p>
     </div>
 
-    ${renderDeliverables(project.deliverables)}
+    ${renderDeliverables(project.deliverables, project.id)}
     ${renderRevenueLine(project)}
     ${links ? `<div class="card-links">${links}</div>` : ""}
   `;
@@ -204,6 +226,35 @@ async function init() {
     if (!card) return;
     e.preventDefault();
     openProjectById(card.dataset.id);
+  });
+
+  function toggleDeliverable(li) {
+    const list = li.closest(".deliverables");
+    const projectId = list.dataset.project;
+    const nowDone = !li.classList.contains("is-done");
+
+    saveOverride(projectId, li.dataset.text, nowDone);
+    li.classList.toggle("is-done", nowDone);
+    li.setAttribute("aria-checked", String(nowDone));
+    li.querySelector(".deliverable-check").innerHTML = nowDone ? "&#10003;" : "";
+
+    const total = list.querySelectorAll(".deliverable").length;
+    const done = list.querySelectorAll(".deliverable.is-done").length;
+    const countEl = list.closest(".dialog-section").querySelector(".deliverable-count");
+    if (countEl) countEl.textContent = `${done}/${total}`;
+  }
+
+  dialogContent.addEventListener("click", (e) => {
+    const li = e.target.closest(".deliverable");
+    if (li) toggleDeliverable(li);
+  });
+
+  dialogContent.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const li = e.target.closest(".deliverable");
+    if (!li) return;
+    e.preventDefault();
+    toggleDeliverable(li);
   });
 
   dialogClose.addEventListener("click", closeDialog);
