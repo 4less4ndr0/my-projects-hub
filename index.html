@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projects Hub</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>Projects Hub</h1>
+      <p class="subtitle">Stato di avanzamento di ogni progetto, da idea a revenue.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="filters" aria-label="Filtra per stage">
+      <button class="filter-btn is-active" data-filter="all">Tutti</button>
+      <button class="filter-btn" data-filter="ideation">Ideation</button>
+      <button class="filter-btn" data-filter="wip">Work in progress</button>
+      <button class="filter-btn" data-filter="shipment">Shipment</button>
+      <button class="filter-btn" data-filter="revenue">Revenue</button>
+    </section>
+
+    <section id="projects" class="projects-grid" aria-label="Progetti"></section>
+
+    <section class="ideas-section">
+      <div class="ideas-header">
+        <h2>Idea bin</h2>
+        <p class="subtitle">Idee grezze, non ancora validate. Un giorno forse.</p>
+      </div>
+      <div id="ideas" class="ideas-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p id="last-updated"></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

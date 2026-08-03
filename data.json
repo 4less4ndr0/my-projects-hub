@@ -1,0 +1,27 @@
+{
+  "updated": "2026-08-03",
+  "projects": [
+    {
+      "id": "esempio-progetto",
+      "name": "Progetto di esempio",
+      "description": "Questa è una card di esempio: sostituiscila (o cancellala) con il primo progetto reale.",
+      "stage": "wip",
+      "updated": "2026-08-03",
+      "notes": "Ultimo aggiornamento: sto lavorando alla prima versione funzionante.",
+      "revenue": {
+        "status": "none",
+        "amount": "",
+        "notes": ""
+      },
+      "links": []
+    }
+  ],
+  "ideas": [
+    {
+      "id": "esempio-idea",
+      "title": "Idea di esempio",
+      "note": "Un'idea grezza, non ancora validata. Butta qui qualsiasi cosa ti venga in mente.",
+      "added": "2026-08-03"
+    }
+  ]
+}
