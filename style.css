@@ -1,71 +1,84 @@
 /*
-  Tokens copied from shadcn/ui (github.com/shadcn-ui/ui), apps/v4/app/globals.css
-  — default "neutral" theme, oklch color space, plus Tailwind v4 defaults for
-  radius scale, shadow scale, type scale and font stack.
+  Structure/tokens follow shadcn/ui (github.com/shadcn-ui/ui): same variable
+  architecture (background/foreground/card/primary/secondary/muted/accent/
+  border/ring, radius scale, shadow scale, chart-1..4) and the same component
+  mechanics (Button/Badge/Card states, focus rings). Only the token *values*
+  below are a custom skin — a mid-century TWA travel-poster palette: night-sky
+  navy, cherry red, brass gold, ivory paper — instead of shadcn's default
+  neutral gray theme.
 */
 :root {
-  --radius: 0.625rem;
+  --radius: 0.5rem;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0% 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0% 0 0);
-  --primary: oklch(0% 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  /* ivory / daytime ticket paper */
+  --background: oklch(0.97 0.018 85);
+  --foreground: oklch(0.26 0.06 258);
+  --card: oklch(0.97 0.018 85);
+  --card-foreground: oklch(0.26 0.06 258);
+  --primary: oklch(0.5 0.19 25);
+  --primary-foreground: oklch(0.98 0.015 85);
+  --secondary: oklch(0.92 0.025 80);
+  --secondary-foreground: oklch(0.26 0.06 258);
+  --muted: oklch(0.93 0.022 80);
+  --muted-foreground: oklch(0.48 0.045 250);
+  --accent: oklch(0.8 0.14 85);
+  --accent-foreground: oklch(0.26 0.06 258);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.85 0.03 75);
+  --input: oklch(0.85 0.03 75);
+  --ring: oklch(0.76 0.13 85);
 
-  /* shadcn chart tokens — reused here as a sequential stage scale */
-  --chart-1: oklch(80.9% 0.105 251.813); /* blue-300 */
-  --chart-2: oklch(62.3% 0.214 259.815); /* blue-500 */
-  --chart-3: oklch(54.6% 0.245 262.881); /* blue-600 */
-  --chart-4: oklch(48.8% 0.243 264.376); /* blue-700 */
+  /* stage journey: pale sky -> deep sky -> TWA red (launch) -> gold (revenue) */
+  --chart-1: oklch(0.8 0.07 235);
+  --chart-2: oklch(0.58 0.13 250);
+  --chart-3: oklch(0.52 0.19 25);
+  --chart-4: oklch(0.72 0.13 85);
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-display: "Jost", var(--font-sans);
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
-  --text-2xl: 1.5rem;
+  --text-2xl: 1.6rem;
 
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-xs: 0 1px 2px 0 oklch(0.26 0.06 258 / 0.08);
+  --shadow-sm: 0 1px 3px 0 oklch(0.26 0.06 258 / 0.14), 0 1px 2px -1px oklch(0.26 0.06 258 / 0.14);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.371 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.2);
-    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+    /* night sky over the tail fin */
+    --background: oklch(0.2 0.045 258);
+    --foreground: oklch(0.96 0.018 85);
+    --card: oklch(0.25 0.045 258);
+    --card-foreground: oklch(0.96 0.018 85);
+    --primary: oklch(0.58 0.2 25);
+    --primary-foreground: oklch(0.98 0.015 85);
+    --secondary: oklch(0.31 0.045 255);
+    --secondary-foreground: oklch(0.95 0.018 85);
+    --muted: oklch(0.29 0.045 255);
+    --muted-foreground: oklch(0.68 0.035 250);
+    --accent: oklch(0.62 0.12 85);
+    --accent-foreground: oklch(0.18 0.04 258);
+    --destructive: oklch(0.63 0.19 25);
+    --border: oklch(1 0 0 / 12%);
+    --input: oklch(1 0 0 / 16%);
+    --ring: oklch(0.68 0.13 85);
+
+    --chart-1: oklch(0.76 0.08 235);
+    --chart-2: oklch(0.63 0.14 250);
+    --chart-3: oklch(0.6 0.2 25);
+    --chart-4: oklch(0.76 0.14 85);
+
+    --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.3);
+    --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.4), 0 1px 2px -1px oklch(0 0 0 / 0.4);
   }
 }
 
@@ -87,8 +100,30 @@ body {
 /* ---------- layout ---------- */
 
 .topbar {
-  border-bottom: 1px solid var(--border);
-  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid var(--primary);
+  padding: 2.25rem 1rem;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      color-mix(in oklch, var(--foreground) 5%, transparent) 0px,
+      color-mix(in oklch, var(--foreground) 5%, transparent) 1px,
+      transparent 1px,
+      transparent 68px
+    ),
+    var(--background);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .topbar {
+    animation: contrail-drift 50s linear infinite;
+  }
+}
+
+@keyframes contrail-drift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 2000px 0, 0 0; }
 }
 
 .topbar-inner,
@@ -97,11 +132,24 @@ body {
   margin: 0 auto;
 }
 
+.topbar-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.brand-icon {
+  flex: none;
+  color: var(--primary);
+}
+
 .topbar h1 {
   margin: 0 0 0.3rem;
+  font-family: var(--font-display);
   font-size: var(--text-2xl);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
@@ -128,14 +176,15 @@ body {
   align-items: center;
   justify-content: center;
   height: 2rem;
-  padding: 0 0.75rem;
+  padding: 0 0.8rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   background: var(--background);
   color: var(--foreground);
-  font-family: inherit;
+  font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 500;
+  letter-spacing: 0.01em;
   cursor: pointer;
   box-shadow: var(--shadow-xs);
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
@@ -144,6 +193,7 @@ body {
 .filter-btn:hover {
   background: var(--accent);
   color: var(--accent-foreground);
+  border-color: var(--accent);
 }
 
 .filter-btn:focus-visible {
@@ -181,7 +231,8 @@ body {
 
 .card-title {
   margin: 0;
-  font-size: var(--text-base);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -215,16 +266,17 @@ body {
 
 .step.is-current {
   background: var(--step-color, var(--primary));
-  box-shadow: 0 0 0 3px color-mix(in oklch, var(--step-color, var(--primary)) 25%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--step-color, var(--primary)) 30%, transparent);
 }
 
 .stage-labels {
   display: flex;
   justify-content: space-between;
+  font-family: var(--font-display);
   font-size: 0.68rem;
   color: var(--muted-foreground);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   font-weight: 500;
 }
 
@@ -251,8 +303,10 @@ body {
   padding: 0.1rem 0.6rem;
   border-radius: 999px;
   border: 1px solid transparent;
+  font-family: var(--font-display);
   font-size: var(--text-xs);
   font-weight: 500;
+  letter-spacing: 0.02em;
   white-space: nowrap;
   background: var(--secondary);
   color: var(--secondary-foreground);
@@ -304,6 +358,7 @@ body {
 .card-links a:hover {
   background: var(--accent);
   color: var(--accent-foreground);
+  border-color: var(--accent);
 }
 
 .revenue-detail {
@@ -312,7 +367,7 @@ body {
   color: var(--muted-foreground);
 }
 
-/* ---------- idea bin (dashed Card variant) ---------- */
+/* ---------- idea bin (dashed Card variant — the dashes read as a flight path) ---------- */
 
 .ideas-header {
   margin-bottom: 1rem;
@@ -320,6 +375,7 @@ body {
 
 .ideas-header h2 {
   margin: 0 0 0.25rem;
+  font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -333,13 +389,14 @@ body {
 
 .idea-card {
   background: var(--card);
-  border: 1px dashed var(--input);
+  border: 1.5px dashed color-mix(in oklch, var(--accent) 65%, var(--border));
   border-radius: var(--radius-xl);
   padding: 1rem;
 }
 
 .idea-card h3 {
   margin: 0 0 0.4rem;
+  font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 600;
 }
