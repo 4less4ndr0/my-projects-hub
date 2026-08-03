@@ -1,6 +1,6 @@
 # Projects Hub
 
-Landing page personale per tracciare lo stato di ogni progetto: **Ideation → Work in progress → Shipment → Revenue**, più un bacino di idee grezze non ancora validate.
+Landing page personale per tracciare lo stato di ogni progetto lungo il suo volo — **Imbarco → Decollo → Quota di crociera → Atterraggio** — più un hangar per le idee grezze non ancora validate.
 
 ## Come funziona
 
@@ -38,7 +38,7 @@ Tutti i contenuti vivono in [`data.json`](data.json). Non c'è build né backend
 }
 ```
 
-`stages` ha una chiave per ogni fase raggiunta (`ideation`, `wip`, `shipment`, `revenue`); le fasi non ancora raggiunte si omettono — il dialog di dettaglio mostrerà per quelle solo le domande di riferimento, senza risposta. Le domande di ogni fase (e i riferimenti al framework da cui vengono) vivono in `INTAKE_QUESTIONS` dentro [`script.js`](script.js), non in `data.json`: le risposte devono seguire lo stesso ordine.
+`stages` ha una chiave per ogni fase raggiunta — `ideation` (Imbarco), `wip` (Decollo), `shipment` (Quota di crociera), `revenue` (Atterraggio); i nomi delle chiavi restano questi in inglese per compatibilità col codice, le etichette in italiano sono solo visive. Le fasi non ancora raggiunte si omettono — il dialog di dettaglio mostrerà per quelle solo le domande di riferimento (col badge "Prossima tappa"), senza risposta. Le domande di ogni fase (e i riferimenti al framework da cui vengono) vivono in `INTAKE_QUESTIONS` dentro [`script.js`](script.js), non in `data.json`: le risposte devono seguire lo stesso ordine.
 
 `deliverables` è opzionale ma consigliato **per ogni fase**, non solo per `wip`: è la checklist concreta di quella fase, cliccabile nel dialog (lo stato spuntato/non spuntato si salva nel browser).
 
