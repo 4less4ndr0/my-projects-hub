@@ -126,6 +126,30 @@ body {
   to { background-position: 2000px 0, 0 0; }
 }
 
+.flyby-plane {
+  position: absolute;
+  top: 60%;
+  left: -8%;
+  width: 30px;
+  height: 30px;
+  color: var(--primary);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flyby-plane {
+    animation: plane-flyby 17s ease-in-out infinite;
+  }
+}
+
+@keyframes plane-flyby {
+  0%, 78% { left: -8%; top: 62%; opacity: 0; transform: rotate(0deg); }
+  82% { left: 6%; top: 55%; opacity: 0.9; transform: rotate(-6deg); }
+  94% { left: 100%; top: 14%; opacity: 0.9; transform: rotate(-6deg); }
+  97%, 100% { left: 106%; top: 10%; opacity: 0; transform: rotate(-6deg); }
+}
+
 .topbar-inner,
 .wrap {
   max-width: 1120px;
