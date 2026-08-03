@@ -19,12 +19,13 @@ Tutti i contenuti vivono in [`data.json`](data.json). Non c'è build né backend
       "stages": {
         "ideation": {
           "updated": "YYYY-MM-DD",
-          "answers": ["risposta 1", "risposta 2", "risposta 3", "risposta 4"]
+          "answers": ["risposta 1", "risposta 2", "risposta 3", "risposta 4"],
+          "deliverables": [{ "text": "Cosa va fatto in questa fase", "done": false }]
         },
         "wip": {
           "updated": "YYYY-MM-DD",
           "answers": ["risposta 1", "risposta 2", "risposta 3"],
-          "deliverables": [{ "text": "Cosa va fatto", "done": false }]
+          "deliverables": [{ "text": "Cosa va fatto in questa fase", "done": false }]
         }
       },
       "revenue": { "status": "none | early | growing", "amount": "", "notes": "" },
@@ -38,6 +39,8 @@ Tutti i contenuti vivono in [`data.json`](data.json). Non c'è build né backend
 ```
 
 `stages` ha una chiave per ogni fase raggiunta (`ideation`, `wip`, `shipment`, `revenue`); le fasi non ancora raggiunte si omettono — il dialog di dettaglio mostrerà per quelle solo le domande di riferimento, senza risposta. Le domande di ogni fase (e i riferimenti al framework da cui vengono) vivono in `INTAKE_QUESTIONS` dentro [`script.js`](script.js), non in `data.json`: le risposte devono seguire lo stesso ordine.
+
+`deliverables` è opzionale ma consigliato **per ogni fase**, non solo per `wip`: è la checklist concreta di quella fase, cliccabile nel dialog (lo stato spuntato/non spuntato si salva nel browser).
 
 ## Pubblicazione
 
