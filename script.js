@@ -315,11 +315,19 @@ function renderNewProjectDialog() {
 
 function renderIdeaCard(idea) {
   return `
-    <div class="idea-card">
+    <div class="idea-card" data-id="${escapeHtml(idea.id)}" tabindex="0" role="button" aria-haspopup="dialog">
       <h3>${escapeHtml(idea.title)}</h3>
       <p>${escapeHtml(idea.note)}</p>
       <time>${idea.added ? "Aggiunta " + escapeHtml(idea.added) : ""}</time>
     </div>
+  `;
+}
+
+function renderIdeaDialog(idea) {
+  return `
+    <h2 id="dialog-title" class="dialog-title">${escapeHtml(idea.title)}</h2>
+    <p class="card-desc">${escapeHtml(idea.note)}</p>
+    <time class="card-updated">${idea.added ? "Aggiunta " + escapeHtml(idea.added) : ""}</time>
   `;
 }
 
@@ -367,6 +375,11 @@ async function init() {
     if (project) openDialog(project);
   }
 
+  function openIdeaById(id) {
+    const idea = (data.ideas || []).find((i) => i.id === id);
+    if (idea) showDialog(renderIdeaDialog(idea));
+  }
+
   renderProjects("all");
 
   ideasEl.innerHTML = (data.ideas || []).length
@@ -397,6 +410,19 @@ async function init() {
     if (!card) return;
     e.preventDefault();
     openProjectById(card.dataset.id);
+  });
+
+  ideasEl.addEventListener("click", (e) => {
+    const card = e.target.closest(".idea-card");
+    if (card) openIdeaById(card.dataset.id);
+  });
+
+  ideasEl.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const card = e.target.closest(".idea-card");
+    if (!card) return;
+    e.preventDefault();
+    openIdeaById(card.dataset.id);
   });
 
   function toggleDeliverable(li) {

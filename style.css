@@ -477,6 +477,20 @@ body {
   border: 1.5px dashed color-mix(in oklch, var(--accent) 65%, var(--border));
   border-radius: var(--radius-xl);
   padding: 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.idea-card:hover {
+  border-color: var(--ring);
+  box-shadow: 0 4px 14px 0 oklch(0.26 0.06 258 / 0.12);
+  transform: translateY(-1px);
+}
+
+.idea-card:focus-visible {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent);
 }
 
 .idea-card h3 {
@@ -491,6 +505,10 @@ body {
   font-size: var(--text-sm);
   color: var(--muted-foreground);
   line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .idea-card time {
