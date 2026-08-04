@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-03",
+  "updated": "2026-08-04",
   "projects": [
     {
       "id": "deal-check",
@@ -82,6 +82,79 @@
           "url": "https://github.com/4less4ndr0/deal-guard"
         }
       ]
+    },
+    {
+      "id": "locali",
+      "name": "LocaLì",
+      "description": "Piattaforma per studenti internazionali che li aiuta a orientarsi in una città nuova: posti da vivere da local, sconti studenteschi aggregati, percorsi sicuri in tempo reale.",
+      "stage": "wip",
+      "updated": "2026-08-04",
+      "summary": "Nata da 4 mesi di ricerca universitaria (pivot da CheckTheStreet), con MVP funzionante su Lovable e pitch pronto per un pre-seed da 50K€ — attenzione: se il progetto riprende, tutto va rivalidato sul campo, la ricerca finora è solo online.",
+      "stages": {
+        "ideation": {
+          "updated": "2026-08-04",
+          "answers": [
+            "### Segmento beachhead\nStudenti internazionali in mobilità (Erasmus e affini) che arrivano in Italia per un semestre: 50.000 arrivi/anno (SOM), un flusso concentrato, ricorrente e raggiungibile tramite le reti degli enti di scambio (ESN e università).\n\n### Perché proprio questo segmento\nÈ il segmento con il problema più acuto e il ciclo di vita più breve: 180 giorni in cui ogni ora persa a orientarsi è un pezzo di esperienza che non torna indietro, senza una rete locale già pronta.",
+            "### Valore critico\nDare *contesto locale dal primo giorno*: sapere dove andare stasera, dove studiare, come muoversi in sicurezza — senza dover ricostruire da zero, in poche settimane, la conoscenza che un residente ha accumulato in anni.\n\n### Momento d'uso\nLungo tutto il semestre, ma critico soprattutto nelle prime settimane, quando la maggior parte delle decisioni quotidiane si basa su informazioni che lo studente ancora non ha.",
+            "### Competitor più vicino\nTre categorie, nessuna pensata per lo studente in mobilità: piattaforme come ESN Card/Erasmus+/Unidays (valore economico ma directory statiche, senza esplorazione in tempo reale né sicurezza), navigatori tradizionali come Google Maps/Waze (dati enormi ma zero curation per la nicchia studentesca, zero sconti integrati), social (TikTok, Instagram, passaparola: informazione frammentata, senza struttura né sicurezza).\n\n### Perché LocaLì\nUnisce in un unico prodotto le tre cose oggi sparse — scoperta della città, sconti, sicurezza — pensato per chi vive un soggiorno breve senza rete locale.",
+            "### Assunzioni chiave\nChe il 34% di integrazione (ESNsurvey XV, N=17.855) sia un problema di *strumenti mancanti* e non di motivazione; che uno studente paghi per accedere prima a sconti/contesto locale piuttosto che arrangiarsi gratis; che verificare gli sconti a mano nei locali basti a validare la domanda prima di accordi B2B veri.\n\n### Come sono nate\nLocaLì è il pivot di **CheckTheStreet**, un'app stile Waze per segnalazioni di sicurezza in tempo reale: quando proiezioni finanziarie e vincoli legali hanno reso chiaro che quel modello non reggeva, il problema è stato rimesso in discussione da zero invece di essere difeso.\n\n### ⚠️ Stato di validazione — leggere prima di riprendere il progetto\nTutto quanto sopra (segmento, valore, competitor, TAM/SAM/SOM, l'ask di 50K€ e le proiezioni a 3 anni) nasce da **ricerca online e preliminare**, fatta in 4 mesi di corso universitario — non da interviste o test sul campo. Va trattato come un'**ipotesi di lavoro**. Se il progetto riprende, il primo passo categorico è rimettere in dubbio tutto e validare hands-on: parlare con studenti reali, testare la disponibilità a pagare, verificare i benchmark con fonti primarie."
+          ],
+          "deliverables": [
+            {
+              "text": "Individuare il segmento beachhead",
+              "done": true
+            },
+            {
+              "text": "Mappare i competitor diretti/indiretti",
+              "done": true
+            },
+            {
+              "text": "Parlare con 5+ studenti internazionali reali (non solo ricerca online)",
+              "done": false
+            },
+            {
+              "text": "Validare le assunzioni chiave con ricerca sul campo",
+              "done": false
+            }
+          ]
+        },
+        "wip": {
+          "updated": "2026-08-04",
+          "answers": [
+            "### MVP\nFunzionante su Lovable, con i flussi principali disegnati: onboarding in due domande (durata Erasmus + università, senza carta di credito), mappa Explore con pin per categoria, Student Deals con card del locale e istruzioni per sbloccare lo sconto, Safe & Chill con overlay di sicurezza crowdsourced e calcolo di due percorsi (sicuro vs veloce) con punteggio, profilo con carta studente digitale e stato abbonamento.\n\n### A che punto siamo\nDemo/pitch pronti, MVP navigabile su Lovable; non ancora testato con utenti reali al di fuori del team.",
+            "### Come il cliente scopre/decide/acquista\nCanale pensato: reti studentesche internazionali (ESN e simili), programma di ambassador LocaLì nei singoli atenei, presenza in spazi studio/co-working, i locali stessi come punto di contatto fisico. Onboarding a zero attrito: due domande, nessuna carta di credito richiesta, 7 giorni di prova gratuita prima di scegliere il piano.\n\n### Obiettivo GTM (non ancora eseguito)\n2.500 utenti paganti nel primo semestre, su Milano, Roma e Napoli — è un target del piano, non un dato osservato.",
+            "### Modello di business\nFreemium a tre livelli: Guest gratuito (mappa base, feed sfocato, nessuno sconto sbloccato), Monthly Pass a 2,99€/mese, Semester Pass a 9,99€ una tantum per l'intero semestre — stesse funzionalità del mensile, cambia solo come si paga. Trial gratuito di 7 giorni prima della scelta.\n\n### Sul lato sconti (B2C prima, B2B dopo)\nPer validare in fretta senza dover chiudere accordi commerciali, gli sconti studenteschi vengono raccolti entrando fisicamente nei locali e verificando se già li offrono, poi segnalati su LocaLì — una soluzione-ponte B2C. Le partnership B2B formali con gli esercenti sono rimandate a quando la base utenti sarà consolidata, quando LocaLì avrà più leva per negoziare condizioni migliori.\n\n### ⚠️ Anche questo è un'ipotesi\nPricing, LTV e costo di acquisizione nel pitch — incluso l'ask di **50K€ pre-seed** e le proiezioni P&L a 3 anni — sono stime costruite sullo stesso modello non ancora validato sul campo: vanno riverificate insieme alle assunzioni di Imbarco prima di essere trattate come piano operativo."
+          ],
+          "deliverables": [
+            {
+              "text": "MVP navigabile costruito su Lovable",
+              "done": true
+            },
+            {
+              "text": "Validare i benchmark di mercato (TAM/SAM/SOM) con fonti primarie",
+              "done": false
+            },
+            {
+              "text": "Testare l'MVP con utenti esterni reali (non solo il team)",
+              "done": false
+            },
+            {
+              "text": "Verificare la disponibilità a pagare con studenti veri",
+              "done": false
+            },
+            {
+              "text": "Rivalutare l'ask di fundraising (50K pre-seed) solo dopo validazione sul campo",
+              "done": false
+            }
+          ]
+        }
+      },
+      "revenue": {
+        "status": "none",
+        "amount": "",
+        "notes": ""
+      },
+      "links": []
     }
   ],
   "ideas": [
