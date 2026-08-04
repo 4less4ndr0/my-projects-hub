@@ -154,7 +154,12 @@
         "amount": "",
         "notes": ""
       },
-      "links": []
+      "links": [
+        {
+          "label": "Lovable",
+          "url": "https://lovable.dev/projects/53ddc45d-4392-46d2-befa-fc8de60c7ecd"
+        }
+      ]
     }
   ],
   "ideas": [
