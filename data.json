@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-04",
+  "updated": "2026-08-05",
   "projects": [
     {
       "id": "deal-check",
@@ -158,6 +158,100 @@
         {
           "label": "Lovable",
           "url": "https://lovable.dev/projects/53ddc45d-4392-46d2-befa-fc8de60c7ecd"
+        }
+      ]
+    },
+    {
+      "id": "ross",
+      "name": "R.O.S.S.",
+      "description": "Dispositivo/companion conversazionale AI per anziani che vivono soli: conversazioni personalizzate biograficamente (non generiche), gestione umana delle routine quotidiane (farmaci, pasti, idratazione, appuntamenti), rilevazione di segnali di benessere/malessere e report narrativo giornaliero ai caregiver. Principio cardine: elaborazione on-device (\"la voce di tua madre non esce mai da casa\"), con sync selettiva dei soli dati autorizzati.",
+      "stage": "wip",
+      "updated": "2026-08-05",
+      "summary": "Prototipo funzionante in fase di validazione sul campo (test RSA/co-housing). Fondamenta di prodotto/tech già definite: feature list matura (CORE + Day 1 + Day 2), architettura on-device, prima scocca hardware in stampa 3D. Nato in 24h all'H-ACK (robotics hackathon H-FARM), selezionato tra i top project ed entrato nel venture building program. Team di 4 founder con accordo operativo (Alessandro Di Mauro PM, Federico Sassu finanza, Alessandra Beretta PM/relazioni cliniche, Luca Marzotto tech). Criticità: 14 task ad alta priorità in pausa (legale/brevetto, struttura societaria startup innovativa, remunerazione team, ruoli), validazione sul campo ancora debole (1 visita RSA non riuscita, contatto giusto = psicologa da seguire), modello di business B2C/B2B da definire.",
+      "stages": {
+        "ideation": {
+          "updated": "2026-08-05",
+          "answers": [
+            "Segmento beachhead: anziani che vivono soli (user persona Maria Bianchi, 78 anni, Treviso) con caregiver familiare attivo (figlia Laura). Scelto perché è il problema che conosco da vicino e ha bisogno acuto: solitudine + declino cognitivo. Target in esplorazione: B2C (famiglie) e B2B (RSA, co-housing).",
+            "Valore critico: compagnia conversazionale biograficamente personalizzata (non generica) + gestione 'umana' delle routine (farmaci, pasti, appuntamenti) + report narrativo giornaliero al caregiver (non dati grezzi). Momento d'uso: vita quotidiana dell'anziano solo — mattina/sera, routine, momenti di solitudine.",
+            "Competitor più vicino: non ancora formalmente mappato. Differenziazione chiara su due assi: privacy on-device ('la voce di tua madre non esce mai da casa') e personalizzazione biografica profonda (vs assistenti generici tipo Alexa/Google). Da completare con analisi competitiva strutturata.",
+            "Assunzioni chiave: che un anziano interagisca davvero con un companion vocale; che i caregiver (famiglie/RSA) trovino valore nel report narrativo; che la personalizzazione biografica aumenti engagement e benessere. Testate solo parzialmente: segnali positivi dalla visita RSA (interesse per videochiamata/uso B2C), ma nessuna validazione strutturata con utenti reali."
+          ],
+          "deliverables": [
+            {
+              "text": "Definire user persona dettagliata (Maria Bianchi) e scheda 'cosa ROSS deve/non deve fare'",
+              "done": true
+            },
+            {
+              "text": "Ricerca/fondamenta iniziali (FTO, tech stack, hardware, repo GitHub, sviluppo AI)",
+              "done": true
+            },
+            {
+              "text": "Bozza brevetto e scouting IP",
+              "done": true
+            },
+            {
+              "text": "Validare con RSA/co-housing reali (visita fatta, contatto psicologa da seguire)",
+              "done": false
+            },
+            {
+              "text": "Mappare i competitor diretti/indiretti",
+              "done": false
+            }
+          ]
+        },
+        "wip": {
+          "updated": "2026-08-05",
+          "answers": [
+            "MVP: companion conversazionale con ontologia biografica strutturata (F-01), conversazione personalizzata (F-02), adattamento in tempo reale tramite Indice di Vivacità Conversazionale (F-03), reminiscenza guidata (F-04), gestione conversazionale delle routine (F-08), daily report narrativo al caregiver (F-13). Architettura on-device (F-19), onboarding biografico (F-17), gestione confusione/agitazione (F-09), rilevamento assenza anomala (F-15), cancellazione dati vocale (F-20), trasparenza AI (F-21). Hardware: prima scocca in stampa 3D (passaggio a viti termoindurenti), obiettivo assemblaggio; priorità confermata: qualità voce/software prima dell'estetica, prototipo 'da mensola' (non mobile).",
+            "Scoperta/decisione/acquisto: non ancora definito. Canali in esplorazione: partnership pilota con RSA/case di cura/co-housing in Veneto (dopo decisione strategica del 27/07), contatto psicologa della RSA visitata, database landing (Nome, Email, Source) per raccolta lead. Nessun flusso di acquisizione strutturato ancora.",
+            "Modello di business: in valutazione — B2C (famiglie, abbonamento?) e B2B (RSA/co-housing) entrambi esplorati; unit economics e rapporti investitori a carico di Federico (finanza). Nessuna revenue ancora; pricing e LTV/CoCA non definiti."
+          ],
+          "deliverables": [
+            {
+              "text": "Deck 1.0 e Negoziazione 2.0",
+              "done": true
+            },
+            {
+              "text": "Allegato A e aggiornamento accordo quadro",
+              "done": true
+            },
+            {
+              "text": "Ricerca co-housing e deck 'Anni Sereni'",
+              "done": true
+            },
+            {
+              "text": "Feature list e roadmap (CORE, Day 1, Day 2) definite",
+              "done": true
+            },
+            {
+              "text": "Scocca hardware stampa 3D completata e assemblaggio verificato",
+              "done": false
+            },
+            {
+              "text": "Validare sul campo con RSA/co-housing (contattare psicologa RSA, nuovi contatti Veneto)",
+              "done": false
+            },
+            {
+              "text": "Sbloccare filoni in pausa: legale/brevetto, struttura societaria (startup innovativa), remunerazione team, ruoli",
+              "done": false
+            },
+            {
+              "text": "Evolvere pitch deck in brandbook modulare per destinatario (RSA vs co-housing vs investitori)",
+              "done": false
+            }
+          ]
+        }
+      },
+      "revenue": {
+        "status": "none",
+        "amount": "",
+        "notes": "Nessuna revenue. Modello di business (B2C famiglie / B2B RSA-cohousing) ancora in valutazione."
+      },
+      "links": [
+        {
+          "label": "Notion Hub",
+          "url": "https://app.notion.com/p/alessandrodimauro/ROSS-345011f9630280989798f366e6275c5f"
         }
       ]
     }
