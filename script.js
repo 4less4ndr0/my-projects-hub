@@ -430,7 +430,9 @@ async function init() {
   const addProjectBtn = document.getElementById("add-project-btn");
 
   function renderProjects(filter) {
-    const list = data.projects.filter((p) => filter === "all" || p.stage === filter);
+    const list = data.projects
+      .filter((p) => filter === "all" || p.stage === filter)
+      .sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
     projectsEl.innerHTML = list.length
       ? list.map(renderProjectCard).join("")
       : `<p class="empty-state">Nessun volo in questa fase.</p>`;
