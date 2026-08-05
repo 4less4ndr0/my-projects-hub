@@ -362,6 +362,7 @@ function renderProjectDialog(project) {
     <p class="card-desc">${escapeHtml(project.description)}</p>
 
     ${renderStepper(project.stage)}
+    ${project.summary ? `<p class="card-notes">${escapeHtml(project.summary)}</p>` : ""}
 
     <div class="accordion">${accordion}</div>
   `;
