@@ -338,7 +338,7 @@ function renderProjectCard(project) {
       <p class="card-desc">${escapeHtml(project.description)}</p>
       ${renderStepper(project.stage)}
       ${renderRevenueLine(project)}
-      ${project.summary ? `<p class="card-notes">${escapeHtml(project.summary)}</p>` : ""}
+      ${project.summary ? `<p class="card-notes"><span class="card-notes-text">${escapeHtml(project.summary)}</span></p>` : ""}
       <div class="card-footer">
         <span class="badge" style="--dot-color:${stage.color}">${stage.label}</span>
         <span class="card-updated">${project.updated ? "Check-in " + escapeHtml(project.updated) : ""}</span>
@@ -362,7 +362,7 @@ function renderProjectDialog(project) {
     <p class="card-desc">${escapeHtml(project.description)}</p>
 
     ${renderStepper(project.stage)}
-    ${project.summary ? `<p class="card-notes">${escapeHtml(project.summary)}</p>` : ""}
+    ${project.summary ? `<p class="card-notes"><span class="card-notes-text">${escapeHtml(project.summary)}</span></p>` : ""}
 
     <div class="accordion">${accordion}</div>
   `;

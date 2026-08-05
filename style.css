@@ -421,7 +421,7 @@ body {
   padding: 0.6rem 0.75rem;
 }
 
-.card .card-notes {
+.card .card-notes-text {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
