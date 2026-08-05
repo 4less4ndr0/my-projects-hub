@@ -258,6 +258,89 @@
           "url": "https://sonoross.lovable.app"
         }
       ]
+    },
+    {
+      "id": "matrimoni-top",
+      "name": "matrimoni.top",
+      "description": "Siti-matrimonio personalizzati con RSVP, consegnati come prodotto finito (non un tool self-service): due tier, T1 automatizzato (€150–250) e T2 personalizzazione completa (€400–800), pensati per coppie italiane che organizzano da sole, senza wedding planner.",
+      "stage": "ideation",
+      "updated": "2026-08-05",
+      "summary": "Fase Imbarco, non ancora Decollo: il criterio di uscita (assunzioni chiave testate) non è soddisfatto — zero interviste primarie fatte finora. Già solido: segmentazione su 3 segmenti, beachhead scelto (S1 — coppie autonome premium, budget >€15–20K), TAM/SAM/SOM bottom-up, persona Giulia, mappa competitor (Il Nostro Sì e WeddingZen come benchmark diretti), sondaggi e protocolli Mom Test progettati. Rischi aperti: mercato dei matrimoni in calo strutturale (-5,9%/anno), il 98% delle coppie non paga oggi per comunicazione digitale, e il ticket ipotizzato (€150–800) non è differenziato sul prezzo rispetto a 8+ competitor italiani già attivi (€35–350).",
+      "stages": {
+        "ideation": {
+          "updated": "2026-08-05",
+          "answers": [
+            "Candidato beachhead: S1 — coppie italiane autonome premium (Millennial/Gen Z, 28–38 anni, Nord/Centro Italia, budget matrimonio >€15.000–20.000), che organizzano senza wedding planner e sono già digitalmente autonome (pagano Spotify/Netflix/Airbnb). Persona primaria: Giulia (decisioni estetiche), partner secondario Alessandro/Marco (gatekeeper del budget). Scelto rispetto alle alternative mappate (S2 — grandi matrimoni Sud, S3 — wedding planner come canale B2B2C) perché più preciso, più coerente col frame \"prodotto consegnato\" e con barriera culturale più bassa (S2 ha rito religioso al 74% e forte conservatorismo, S3 richiederebbe un'architettura di prodotto diversa). Domanda esplicitamente lasciata aperta: se esistono contatti/competenze del team che rendono un altro segmento più raggiungibile sulla carta — in quel caso dovrebbe essere quello a guidare la scelta, non il \"migliore sulla carta\".",
+            "Valore dichiarato: \"Il mio matrimonio appare curato anche nei dettagli digitali, senza assumere un wedding planner o un web designer. Gli ospiti trovano tutto in un posto solo, io smetto di rispondere alle stesse domande su WhatsApp.\" Finestra d'uso: 2–4 settimane attorno all'invio delle partecipazioni, tipicamente 3–6 mesi prima dell'evento — fuori da quella finestra l'urgenza percepita crolla a zero.",
+            "Il concorrente più forte resta il \"do nothing\" (WhatsApp + PDF, usato dal 98% delle coppie). Tra i competitor a pagamento italiani, i benchmark diretti sono Il Nostro Sì (€65–95, recensioni verificate, consegna rapida) e WeddingZen — non Zola o The Digital Yes, globali e non localizzati. Al prezzo T1 (€150–250) matrimoni.top sarebbe il settimo/ottavo entrante più economico su 29 competitor mappati, non un riempitivo di un vuoto di prezzo: otto competitor credibili prezzano già €35–120 con pressione verso il basso. Perché il cliente dovrebbe scegliere noi resta una domanda aperta, non una risposta — il differenziatore ipotizzato è estetica + localizzazione culturale + qualità del prodotto finito, non il prezzo.",
+            "Tre assunzioni chiave registrate, nessuna testata: (1) le coppie italiane pagano per comunicazione digitale del matrimonio — da validare con interviste dirette e domanda esplicita di willingness-to-pay; (2) il prodotto si differenzia abbastanza dai competitor italiani già attivi (GoWeddy, SitoWedding, MoguWedding...) — da validare con test di preferenza affiancato ai competitor; (3) il frame \"prodotto ordinato e consegnato\" abbassa la resistenza all'acquisto rispetto a un tool/abbonamento — da osservare nel linguaggio spontaneo delle interviste. Da memoria di sessioni precedenti risultano anche assunzioni L1–L5 e ipotesi H0–HR3 documentate altrove (L1, il dolore reale attorno alla comunicazione con gli ospiti, segnalato come la più fragile), ma non ritrovate su fonte primaria in questa ricostruzione."
+          ],
+          "deliverables": [
+            {
+              "text": "Segmentazione di mercato completa su 3 segmenti (S1/S2/S3), 17/17 campi DE per ciascuno",
+              "done": true
+            },
+            {
+              "text": "Beachhead candidato selezionato (S1) con motivazione esplicita",
+              "done": true
+            },
+            {
+              "text": "TAM Europa, SAM wedding-tech Europa, SOM Italia bottom-up (con caveat di divergenza tra fonti)",
+              "done": true
+            },
+            {
+              "text": "Stima cascata beachhead pagante (5.000–15.000 coppie/anno)",
+              "done": true
+            },
+            {
+              "text": "Persona profile (Giulia + partner) con demographics, psychographics, proxy products, watering holes",
+              "done": true
+            },
+            {
+              "text": "Mappa competitor diretti italiani (verificati su fonte primaria: Il Nostro Sì, WeddingZen)",
+              "done": true
+            },
+            {
+              "text": "Sondaggi pre/post-acquisto progettati (HTML + Markdown)",
+              "done": true
+            },
+            {
+              "text": "Protocolli di intervista Mom Test progettati (coppie già sposate + coppie in fase di organizzazione)",
+              "done": true
+            },
+            {
+              "text": "Eseguire le prime interviste primarie (0 fatte a oggi)",
+              "done": false
+            },
+            {
+              "text": "Compilare i campi \"Day in the Life\" e \"Priorities\" (pesi reali) dell'End User Sheet",
+              "done": false
+            },
+            {
+              "text": "Bottom-up \"counting noses\" tramite fotografi matrimoniali (20+ matrimoni/anno, Nord Italia)",
+              "done": false
+            },
+            {
+              "text": "Test di preferenza H3b: prototipo affiancato ai competitor italiani diretti",
+              "done": false
+            },
+            {
+              "text": "Costruire un MVP effettivo (oggi esiste solo design system + pricing)",
+              "done": false
+            },
+            {
+              "text": "Risolvere la tensione posizionamento T1 vs mercato competitor in calo di prezzo, prima di impegnarsi",
+              "done": false
+            }
+          ]
+        }
+      },
+      "revenue": {
+        "status": "none",
+        "amount": "",
+        "notes": "Nessuna revenue: prodotto ancora in fase di validazione (Imbarco), MVP non costruito, prezzo (T1 €150–250 / T2 €400–800) stimato ma non testato su clienti reali."
+      },
+      "links": []
     }
   ],
   "ideas": [
