@@ -1,0 +1,83 @@
+name: Validate data.json
+
+on:
+  pull_request:
+    paths:
+      - "data.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "data.json"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate data.json shape
+        run: |
+          node - <<'EOF'
+          const fs = require("fs");
+
+          const STAGES = ["ideation", "wip", "shipment", "revenue"];
+          const REVENUE_STATUSES = ["none", "early", "growing"];
+
+          function fail(msg) {
+            console.error("✗ " + msg);
+            process.exitCode = 1;
+          }
+
+          let data;
+          try {
+            data = JSON.parse(fs.readFileSync("data.json", "utf8"));
+          } catch (e) {
+            fail("data.json non è JSON valido: " + e.message);
+            process.exit(1);
+          }
+
+          if (typeof data.updated !== "string") fail("campo top-level 'updated' mancante o non stringa");
+          if (!Array.isArray(data.projects)) fail("campo top-level 'projects' mancante o non array");
+          if (!Array.isArray(data.ideas)) fail("campo top-level 'ideas' mancante o non array");
+
+          (data.projects || []).forEach((p, i) => {
+            const ctx = `projects[${i}]`;
+            if (typeof p.id !== "string" || !p.id) fail(`${ctx}.id mancante`);
+            if (typeof p.name !== "string" || !p.name) fail(`${ctx}.name mancante`);
+            if (typeof p.description !== "string" || !p.description) fail(`${ctx}.description mancante`);
+            if (!STAGES.includes(p.stage)) fail(`${ctx}.stage "${p.stage}" non è una delle fasi valide (${STAGES.join(", ")})`);
+
+            if (p.stages && typeof p.stages === "object") {
+              Object.keys(p.stages).forEach((stageKey) => {
+                if (!STAGES.includes(stageKey)) fail(`${ctx}.stages ha una chiave sconosciuta "${stageKey}"`);
+                const stageData = p.stages[stageKey];
+                if (stageData.answers && !Array.isArray(stageData.answers)) fail(`${ctx}.stages.${stageKey}.answers deve essere un array`);
+                if (stageData.deliverables && !Array.isArray(stageData.deliverables)) fail(`${ctx}.stages.${stageKey}.deliverables deve essere un array`);
+              });
+            }
+
+            if (p.revenue && p.revenue.status && !REVENUE_STATUSES.includes(p.revenue.status)) {
+              fail(`${ctx}.revenue.status "${p.revenue.status}" non valido (${REVENUE_STATUSES.join(", ")})`);
+            }
+
+            if (p.links && !Array.isArray(p.links)) fail(`${ctx}.links deve essere un array`);
+          });
+
+          (data.ideas || []).forEach((idea, i) => {
+            const ctx = `ideas[${i}]`;
+            if (typeof idea.id !== "string" || !idea.id) fail(`${ctx}.id mancante`);
+            if (typeof idea.title !== "string" || !idea.title) fail(`${ctx}.title mancante`);
+            if (typeof idea.note !== "string" || !idea.note) fail(`${ctx}.note mancante`);
+          });
+
+          const ids = [...(data.projects || []).map((p) => p.id), ...(data.ideas || []).map((i) => i.id)];
+          const dupes = ids.filter((id, i) => id && ids.indexOf(id) !== i);
+          if (dupes.length) fail("id duplicati trovati: " + [...new Set(dupes)].join(", "));
+
+          if (process.exitCode) {
+            console.error("\ndata.json non passa la validazione.");
+          } else {
+            console.log("✓ data.json valido.");
+          }
+          EOF

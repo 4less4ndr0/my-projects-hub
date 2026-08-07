@@ -1,0 +1,58 @@
+name: "🚀 Avanzamento di fase"
+description: "Un progetto esistente passa alla fase successiva (Decollo, Quota di crociera o Atterraggio)."
+title: "[Avanzamento] "
+labels: ["avanzamento-fase"]
+body:
+  - type: input
+    id: progetto
+    attributes:
+      label: Progetto
+      description: "Nome o id del progetto esistente (come compare sulla card)."
+    validations:
+      required: true
+  - type: dropdown
+    id: fase
+    attributes:
+      label: Nuova fase raggiunta
+      options:
+        - "Decollo (wip) — si sta costruendo l'MVP"
+        - "Quota di crociera (shipment) — il prodotto è in mano a utenti reali"
+        - "Atterraggio (revenue) — si scala, si guadagna"
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Domande di riferimento per fase (rispondi solo a quelle della fase scelta sopra, nell'ordine):
+
+        **Decollo (wip)**
+        1. Cos'è il tuo MVP, cosa include e a che punto sei nel costruirlo?
+        2. Come il cliente scopre, decide e acquista la tua soluzione?
+        3. Come pensi di guadagnare (modello di business, prezzo, LTV vs costo di acquisizione)?
+
+        **Quota di crociera (shipment)**
+        1. Hai una prova concreta che il prodotto funziona — utenti reali che lo usano/pagano?
+
+        **Atterraggio (revenue)**
+        1. Qual è il potenziale sui mercati successivi e come pensi di scalare il business?
+  - type: textarea
+    id: risposte
+    attributes:
+      label: Risposte
+      description: "Una risposta per riga/paragrafo, nello stesso ordine delle domande della fase scelta sopra."
+    validations:
+      required: true
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: Deliverable di questa fase (opzionale)
+      description: "Una checklist di cose da fare/fatte per questa fase, una per riga. Se alcune sono già fatte, scrivilo (es. \"MVP live su Lovable — fatto\")."
+    validations:
+      required: false
+  - type: textarea
+    id: revenue
+    attributes:
+      label: Stato revenue (solo se la fase è Atterraggio)
+      description: "Stato (nessuna / prime entrate / in crescita), importo e note se ci sono."
+    validations:
+      required: false

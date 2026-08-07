@@ -1,0 +1,19 @@
+name: "🔧 Fix o modifica"
+description: "Un bug, un ritocco, o una modifica a un progetto/idea già esistente che non è un avanzamento di fase."
+title: "[Fix] "
+labels: ["fix"]
+body:
+  - type: textarea
+    id: descrizione
+    attributes:
+      label: Cosa cambiare
+      description: "Descrivi il problema o la modifica che vuoi. Più concreto sei, meglio è (es. \"ordina le card per data di check-in, più recente in alto\")."
+    validations:
+      required: true
+  - type: input
+    id: dove
+    attributes:
+      label: Dove (opzionale)
+      description: "Progetto/idea specifica interessata, se applicabile. Lascia vuoto se è una modifica generale al sito."
+    validations:
+      required: false

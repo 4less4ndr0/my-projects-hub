@@ -1,0 +1,58 @@
+name: "✈️ Nuovo progetto (fase Imbarco)"
+description: "Un'idea è abbastanza matura da diventare un progetto vero, in fase Imbarco (ideation)."
+title: "[Imbarco] "
+labels: ["nuovo-progetto"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Usa questo modulo quando un'idea (magari già in Hangar) è pronta a diventare un progetto vero, con la sua card e il suo percorso a fasi. Le 4 domande sotto sono quelle della fase Imbarco: rispondi nell'ordine, anche a mente prima di scrivere.
+  - type: input
+    id: nome
+    attributes:
+      label: Nome progetto
+      placeholder: "Es: Deal Check"
+    validations:
+      required: true
+  - type: input
+    id: descrizione
+    attributes:
+      label: Descrizione breve
+      description: "Una riga, quella che compare sotto il titolo nella card."
+    validations:
+      required: true
+  - type: textarea
+    id: beachhead
+    attributes:
+      label: "1. Segmento di mercato iniziale (beachhead)"
+      description: "Chi è il tuo segmento di mercato iniziale e perché proprio quello?"
+    validations:
+      required: true
+  - type: textarea
+    id: valore
+    attributes:
+      label: "2. Valore critico"
+      description: "Qual è il valore critico che risolvi per questo cliente, e in quale momento del suo ciclo di vita lo usa?"
+    validations:
+      required: true
+  - type: textarea
+    id: competitor
+    attributes:
+      label: "3. Competitor"
+      description: "Chi è il tuo competitor più vicino e perché il cliente sceglierebbe te?"
+    validations:
+      required: true
+  - type: textarea
+    id: assunzioni
+    attributes:
+      label: "4. Assunzioni chiave"
+      description: "Quali sono le assunzioni chiave su cui si regge l'idea, e le hai già testate?"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link (opzionale)
+      description: "Un link se già esiste qualcosa (repo, sito, prototipo). Lascia vuoto se non c'è ancora."
+    validations:
+      required: false
