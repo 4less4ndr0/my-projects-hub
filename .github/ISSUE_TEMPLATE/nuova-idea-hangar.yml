@@ -1,0 +1,24 @@
+name: "🛫 Nuova idea in Hangar"
+description: "Butta giù un'idea grezza, non ancora validata, da mettere in Hangar."
+title: "[Hangar] "
+labels: ["nuovo-progetto"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        L'Hangar non ha una struttura fissa: solo titolo + nota libera. Non serve validare niente qui, è il posto per buttare giù qualsiasi cosa.
+  - type: input
+    id: titolo
+    attributes:
+      label: Titolo dell'idea
+      placeholder: "Es: App per..."
+    validations:
+      required: true
+  - type: textarea
+    id: nota
+    attributes:
+      label: Nota libera
+      description: "Scrivi come ti viene, anche disordinato. Markdown semplice (titoli, elenchi, grassetto) è supportato."
+      placeholder: "Di cosa si tratta, perché ti è venuta in mente, cosa ti manca per capire se ha senso..."
+    validations:
+      required: true
