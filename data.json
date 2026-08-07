@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-05",
+  "updated": "2026-08-07",
   "projects": [
     {
       "id": "deal-check",
@@ -339,6 +339,90 @@
         "status": "none",
         "amount": "",
         "notes": "Nessuna revenue: prodotto ancora in fase di validazione (Imbarco), MVP non costruito, prezzo (T1 €150–250 / T2 €400–800) stimato ma non testato su clienti reali."
+      },
+      "links": []
+    },
+    {
+      "id": "careoss",
+      "name": "CareOSS",
+      "description": "Matching tra OSS certificati e famiglie/RSA: verifica della certificazione (attestato + esame regionale) prima del match, per ridurre il rischio di assumere personale non qualificato. In coppia con Leonardo Puglisi; Alessandro ne segue l'evoluzione come advisor startup con apporto operativo.",
+      "stage": "ideation",
+      "updated": "2026-08-07",
+      "summary": "Fase Imbarco, inizio fase: ipotesi di problema + ricerca desk (dati macro, competitor, quadro legale) solide, ma nessun deliverable di uscita chiuso — zero interviste sul campo, beachhead e TAM vuoti, WTP non verificata. Strozzatura #1: la validazione sul campo. Il problema stesso va rimesso in dubbio: chi paga davvero per un OSS certificato? Nicchia o mercato di massa?",
+      "stages": {
+        "ideation": {
+          "updated": "2026-08-07",
+          "answers": [
+            "### Segmento beachhead\nNon ancora scelto: famiglie (caregiver familiari) vs strutture (RSA) — il criterio va chiuso con i dati delle interviste, non sulla carta. Griglia di validazione in uso (identikit 'mercato affamato'): un segmento giusto ha un problema, potere d'acquisto, è facile da targettizzare e sta crescendo in fretta — famiglie e strutture vanno testate su questi 4 assi. Nota di rischio sul B2B: le strutture potrebbero vedere la piattaforma come chi drena il loro staff (pattern ShiftKey/CareRev negli USA).",
+            "### Valore critico\nMatching tra OSS certificati e famiglie/RSA: la certificazione (attestato + esame regionale) viene verificata prima del match, per togliere al cliente il rischio di assumere una persona non qualificata. Momento d'uso: la ricerca di un assistente — oggi un percorso ad alto rischio per le famiglie (nessuna verifica) e ad alto costo per le strutture (ricerca interna). Domanda strutturale da tenere viva: la carenza di OSS (~80k mancanti) non si risolve col matching — il problema è anche lato offerta, non solo lato fiducia.",
+            "### Competitor e differenziazione\nMappatura desk: Badacare, DoEmploy, SOS Badante, Badaplus/Openjobmetis — nessuno si posiziona sul rigore della verifica della certificazione verso famiglie E strutture insieme. SOS Badante vince sulla velocità, non sul rigore. Tensione aperta: la verifica è un costo operativo o un asset di fiducia su cui costruire il posizionamento? Il rischio è che il mercato non paghi un premio per il rigore (nessun segnale raccolto finora).",
+            "### Assunzioni da validare (nessuna testata)\n(1) che famiglie e strutture paghino davvero per un OSS *certificato* vs alternative veloci/economiche — la domanda potrebbe essere una nicchia, non il mercato di massa che '4 milioni di anziani' suggerisce; (2) che la verifica sia scalabile e conveniente (a mano oggi, automatizzata domani); (3) che il modello legale regga (marketplace puro vs somministrazione vs ibrido — rischio etero-organizzazione, Cass. 28772/2025, Dir. UE 2024/2831): da chiarire con un consulente del lavoro PRIMA di scrivere codice.",
+            "### Lettura advisor (Alessandro come advisor startup, con apporto operativo)\nGriglia di valutazione in uso da 'Fondamenti dell'Investimento': 5 domande — problema reale? soluzione funziona? mercato grande? team esegue? numeri tornano? Oggi CareOSS risponde: problema = ipotesi, soluzione = non esiste, mercato = non stimato, team = Leonardo da solo, numeri = zero. Protocollo Mom Test applicato anche al founder nelle sync: chiedere fatti, numeri e problemi (quante famiglie contattate? cosa hanno risposto? quanto pagherebbero?) — risposte vaghe = mancanza di dati. Red flag da monitorare: skin in the game del founder, accordo scritto tra soci, capacità di break-even, rifiuto delle domande sui numeri. Regola dell'equilibrio: ritmo di aggiornamento concordato, mai sparire e mai invadere il ruolo del founder."
+          ],
+          "deliverables": [
+            {
+              "text": "Ricerca desk problema e dati macro (4M+ anziani non autosufficienti, RSA al 7,6% del bisogno, ~80k OSS mancanti, PNRR)",
+              "done": true
+            },
+            {
+              "text": "Ricerca legale OSS (normativa nazionale/regionale, rischio etero-organizzazione, quadro IVA)",
+              "done": true
+            },
+            {
+              "text": "Prima mappatura competitor (Badacare, DoEmploy, SOS Badante, Badaplus/Openjobmetis)",
+              "done": true
+            },
+            {
+              "text": "Interviste sul campo: 5 famiglie + 2 strutture + 3 OSS (traccia Mom Test pronta)",
+              "done": false
+            },
+            {
+              "text": "Test manuale del costo di verifica per OSS (verifica = costo o asset?)",
+              "done": false
+            },
+            {
+              "text": "Scegliere beachhead (famiglie vs strutture) e compilare la persona",
+              "done": false
+            },
+            {
+              "text": "End User Profile (demographics, psychographics, fears/motivators)",
+              "done": false
+            },
+            {
+              "text": "TAM beachhead top-down + bottom-up (template pronti ma vuoti)",
+              "done": false
+            },
+            {
+              "text": "Verificare WTP per OSS certificato vs alternative veloci/economiche",
+              "done": false
+            },
+            {
+              "text": "Analisi competitor formale e posizionamento",
+              "done": false
+            },
+            {
+              "text": "Lean Canvas di CareOSS compilato",
+              "done": false
+            },
+            {
+              "text": "Unit economics minime: costo verifica/OSS, prezzo, break-even",
+              "done": false
+            },
+            {
+              "text": "Concierge MVP: verifica + matching a mano prima di scrivere codice",
+              "done": false
+            },
+            {
+              "text": "Validare il segmento con l'identikit 'mercato affamato' (problema, potere d'acquisto, targettizzabilità, crescita)",
+              "done": false
+            }
+          ]
+        }
+      },
+      "revenue": {
+        "status": "none",
+        "amount": "",
+        "notes": "Nessuna revenue: progetto in fase di validazione (Imbarco), nessun prodotto costruito."
       },
       "links": []
     }
