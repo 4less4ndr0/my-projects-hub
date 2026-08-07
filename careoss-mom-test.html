@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareOSS — Traccia interviste Mom Test</title>
+<style>
+  :root { --ink:#1a1d21; --muted:#5b6470; --line:#e3e6ea; --bg:#f6f7f9; --card:#ffffff; --accent:#0e7c66; --warn-bg:#fff7e6; --warn-line:#f2d9a0; --warn-ink:#7a5b12; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; }
+  .wrap { max-width:820px; margin:0 auto; padding:40px 20px 80px; }
+  header { border-bottom:3px solid var(--accent); padding-bottom:16px; margin-bottom:28px; }
+  .kicker { font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+  h1 { font-size:28px; margin:4px 0 8px; }
+  .sub { color:var(--muted); margin:0; font-size:15px; }
+  h2 { font-size:20px; margin-top:40px; border-bottom:1px solid var(--line); padding-bottom:6px; }
+  h3 { font-size:16px; margin-top:24px; }
+  p, li { font-size:15px; }
+  ul, ol { padding-left:22px; }
+  li { margin-bottom:6px; }
+  .meta { display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+  .chip { background:#eef3f2; color:var(--accent); border:1px solid #cfe3de; border-radius:999px; padding:4px 12px; font-size:13px; font-weight:600; }
+  .box { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:18px 0; }
+  .box.warn { background:var(--warn-bg); border-color:var(--warn-line); color:var(--warn-ink); }
+  .box.tip { background:#eef6f4; border-color:#cfe3de; }
+  .q { background:var(--card); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:14px 16px; margin:12px 0; }
+  .q .lbl { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); }
+  .q p { margin:4px 0 0; }
+  code { background:#eef0f2; border-radius:4px; padding:1px 6px; font-size:13px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+  .stat b { display:block; font-size:22px; color:var(--accent); }
+  .stat span { font-size:13px; color:var(--muted); }
+  footer { margin-top:50px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">CareOSS · Fase Imbarco · Deliverable #4</div>
+  <h1>Traccia interviste — Mom Test</h1>
+  <p class="sub">Validazione sul campo: 5 famiglie + 2 strutture (RSA) + 3 OSS. Obiettivo: capire se qualcuno <em>davvero</em> paga per un OSS certificato, e quanto.</p>
+  <div class="meta">
+    <span class="chip">Target: 10 interviste</span>
+    <span class="chip">Finestra: 2 settimane</span>
+    <span class="chip">Durata: 20–30 min</span>
+  </div>
+</header>
+
+<h2>Regole d'oro (leggi prima di ogni intervista)</h2>
+<div class="box warn">
+  <strong>Mom Test = parlare della VITA dell'intervistato, non della tua idea.</strong>
+  <ul>
+    <li>Chiedi <strong>fatti passati</strong> ("raccontami l'ultima volta che…"), mai opinioni sul futuro ("la useresti?", "ti piacerebbe se…").</li>
+    <li>Mai fare il pitch: se vendi, l'intervistato ti compiace e i dati diventano inutili.</li>
+    <li>Frase che non devi MAI dire: "Stiamo costruendo una piattaforma che…".</li>
+    <li>Una risposta vaga = un dato: significa che il problema non è abbastanza concreto da ricordare. Approfondisci, non passare oltre.</li>
+    <li>Prendi appunti durante (o registra con permesso). Dopo ogni intervista: segna cosa era <strong>fatto</strong> e cosa era <strong>opinione</strong>.</li>
+  </ul>
+</div>
+
+<div class="box tip">
+  <strong>Selettore di segnale:</strong> una frase vale come prova quando è al passato e contiene un numero o un episodio ("l'anno scorso ho assunto una badante e non ho controllato niente, dopo 3 mesi ho scoperto…"). Se è al condizionale ("sarebbe bello se…", "pagherei se…"), non è una prova: è cortesia.
+</div>
+
+<h2>Come trovare gli intervistati</h2>
+<div class="grid">
+  <div class="stat"><b>5</b><span>Famiglie con anziano non autosufficiente assistito (o con esperienza di badante negli ultimi 24 mesi)</span></div>
+  <div class="stat"><b>2</b><span>Direttori/coordinatori di RSA o assistenza domiciliare</span></div>
+  <div class="stat"><b>3</b><span>OSS con attestato (verificato o no) attivi o in cerca di lavoro</span></div>
+</div>
+<ul>
+  <li><strong>Famiglie:</strong> gruppi Facebook di zona ("badanti/assistenza anziani [città]"), passaparola di parenti/conoscenti, parrocchie, farmacie, medici di base. Si entra con: "Sto facendo una ricerca su come le famiglie trovano chi assiste i loro anziani, mi aiuti con 20 minuti di chiacchierata?" — nessuna menzione di CareOSS.</li>
+  <li><strong>Strutture:</strong> elenco regionale RSA, chiamata diretta al direttore/coordinatore sanitario. Si entra con: "Stiamo studiando il tema del personale OSS nelle strutture, vorrei capire come gestite la selezione — posso farle 4 domande?"</li>
+  <li><strong>OSS:</strong> gruppi Facebook OSS, LinkedIn, cooperative di settore. Si entra con: "Ricerca sul lavoro degli OSS in Italia, come trovate i posti? 20 minuti e le offro un caffè."</li>
+</ul>
+
+<h2>Traccia A — Famiglia / caregiver familiare (5 interviste)</h2>
+<p>Obiettivo: capire <strong>come cercano, cosa controllano, cosa è andato male, quanto spendono</strong>. Mai parlare di "certificato" finché non lo nomina lei/lui.</p>
+
+<div class="q"><span class="lbl">Aperta — vita e contesto</span><p>"Mi racconti la sua situazione: chi assiste, da quanto tempo, chi la aiuta?"</p></div>
+<div class="q"><span class="lbl">Fatto passato — ricerca</span><p>"L'ultima volta che ha cercato una persona per l'assistenza, come ha fatto? Passo per passo: dove ha guardato, chi le ha risposto, quanto ci è voluto?"</p></div>
+<div class="q"><span class="lbl">Fatto passato — verifica</span><p>"Ha controllato se quella persona aveva titoli, formazione o esperienza? Come? Cosa le ha chiesto?" <em>(se non ha controllato: "perché no?")</em></p></div>
+<div class="q"><span class="lbl">Episodio negativo</span><p>"C'è mai stato un momento in cui ha avuto problemi con chi assisteva (assenze, inaffidabilità, qualifica diversa da quella promessa)? Cosa è successo esattamente? Quanto le è costato risolvere?"</p></div>
+<div class="q"><span class="lbl">Numeri</span><p>"Quanto paga al mese per l'assistenza? E quanto ha speso una tantum per trovarla (agenzia, inserzioni, ecc.)?"</p></div>
+<div class="q"><span class="lbl">WTP da comportamento, non da ipotesi</span><p>"Ha mai pagato qualcosa per stare più tranquilla sulla persona assunta (agenzia, consulenza, check)? Se sì: quanto e cosa ha ricevuto in cambio? Se no: cosa le servirebbe per farlo la prossima volta?"</p></div>
+<div class="q"><span class="lbl">Chiusura — referral</span><p>"Conosce altre 2-3 famiglie nella stessa situazione che potrei chiamare?"</p></div>
+
+<h2>Traccia B — Direttore / coordinatore RSA (2 interviste)</h2>
+<p>Obiettivo: capire <strong>il processo di selezione OSS, il costo di un errore, la disponibilità a pagare per un bacino verificato</strong>.</p>
+
+<div class="q"><span class="lbl">Contesto</span><p>"Quanti OSS lavorano nella sua struttura? Quanti ne ha assunti nell'ultimo anno? C'è turnover?"</p></div>
+<div class="q"><span class="lbl">Processo</span><p>"Come selezionate un OSS oggi? Chi verifica l'attestato e l'iscrizione, e come? Quanto tempo ci mettete?"</p></div>
+<div class="q"><span class="lbl">Costo dell'errore</span><p>"Le è mai capitato di assumere una persona che poi si è scoperto non avere i requisiti o essere inaffidabile? Cosa è successo e quanto è costato (in tempo, soldi, immagine)?"</p></div>
+<div class="q"><span class="lbl">Numeri</span><p>"Qual è il costo medio per l'inserimento di un OSS (annunci, selezione, formazione iniziale, periodo di prova)?"</p></div>
+<div class="q"><span class="lbl">WTP</span><p>"Se esistesse un bacino di OSS con certificazione già verificata e profilo completo, lo usereste? Cosa vi servirebbe per sostituire il processo attuale?" <em>(attenzione: la prima risposta è spesso cortesia — insisti su costi e tempi concreti)</em></p></div>
+<div class="q"><span class="lbl">Tensione B2B</span><p>"Vedreste come un vantaggio o come una minaccia una piattaforma che mette in contatto direttamente famiglie e OSS?" <em>(sonda il rischio 'ci drenano lo staff')</em></p></div>
+
+<h2>Traccia C — OSS (3 interviste)</h2>
+<p>Obiettivo: capire <strong>lato offerta</strong>: come trovano lavoro, se la certificazione è richiesta, quanto pesa averla, cosa li ferma.</p>
+
+<div class="q"><span class="lbl">Contesto</span><p>"Da quanto tempo lavora come OSS? In che contesti (RSA, domicilio, cooperative)?"</p></div>
+<div class="q"><span class="lbl">Ricerca lavoro</span><p>"L'ultima volta che ha cercato lavoro, come ha fatto? Cosa le è stato chiesto (attestato, referenze, esperienza)?"</p></div>
+<div class="q"><span class="lbl">Certificazione</span><p>"Ha l'attestato/iscrizione? Come l'ha ottenuta e quanto le è costato (corso, esame, tempo)? Le è mai capitato che non gliela chiedessero?"</p></div>
+<div class="q"><span class="lbl">Dolore</span><p>"Cosa la infastidisce di più del modo in cui oggi si trova lavoro (agenzie, piattaforme, passaparola)? C'è un episodio concreto?"</p></div>
+<div class="q"><span class="lbl">Incentivo</span><p>"Se una piattaforma verificasse il suo attestato una volta sola e glielo mettesse nel profilo, la userebbe per trovare clienti? Cosa dovrebbe darle in cambio?"</p></div>
+
+<h2>Dopo ogni intervista — registro di 3 righe</h2>
+<div class="box">
+  <ol>
+    <li><strong>Fatti</strong> raccolti (con numero/episodio, citazione testuale se possibile).</li>
+    <li><strong>Opinioni</strong> ricevute (da scartare come prove, utili come segnali).</li>
+    <li>Impatto sulle <strong>assunzioni chiave</strong>: cosa cambia? (chi paga, quanto, verifica = costo o asset, famiglie vs strutture).</li>
+  </ol>
+</div>
+
+<h2>Quando il blocco si considera chiuso (criteri di uscita)</h2>
+<ul>
+  <li><strong>10 interviste fatte</strong> (5 famiglie + 2 strutture + 3 OSS), tutte registrate nel registro.</li>
+  <li><strong>3+ famiglie</strong> che raccontano un episodio passato di verifica mancata o richiesta (non un'ipotesi).</li>
+  <li><strong>Almeno 1 segnale di WTP concreto</strong>: una famiglia che ha già pagato per un check/tranquillità, o una struttura che indica una cifra per un bacino verificato.</li>
+  <li>Se dopo 10 interviste non esce nessun segnale di pagamento → <strong>il problema va rimesso in dubbio</strong>: forse la nicchia "OSS certificato" non è il mercato di massa, e va rivisto l'angolo (es. strutture invece di famiglie, o verifica come servizio per le agenzie). Questo NON è un fallimento: è il risultato che stavamo cercando.</li>
+</ul>
+
+<footer>
+  Documento di lavoro CareOSS — aggiornato 2026-08-07 · Segue la metodologia Mom Test (Rob Fitzpatrick) · Il problema va sempre rimesso in dubbio a ogni fase.
+</footer>
+
+</div>
+</body>
+</html>

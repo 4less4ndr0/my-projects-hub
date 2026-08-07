@@ -373,7 +373,7 @@
               "done": true
             },
             {
-              "text": "Interviste sul campo: 5 famiglie + 2 strutture + 3 OSS (traccia Mom Test pronta)",
+              "text": "Interviste sul campo: 5 famiglie + 2 strutture + 3 OSS (traccia Mom Test: careoss-mom-test.html)",
               "done": false
             },
             {
@@ -424,7 +424,12 @@
         "amount": "",
         "notes": "Nessuna revenue: progetto in fase di validazione (Imbarco), nessun prodotto costruito."
       },
-      "links": []
+      "links": [
+        {
+          "label": "Traccia interviste Mom Test",
+          "url": "careoss-mom-test.html"
+        }
+      ]
     }
   ],
   "ideas": [
